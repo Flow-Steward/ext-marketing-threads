@@ -58,9 +58,9 @@ Each of the 25 Threads API endpoints this release covers is also a step of its o
 ## Requirements
 
 - A Threads account and a Meta app with the Threads use case. Until Meta approves the app's permissions, it works only for the accounts added to the app as Threads testers.
-- A long-lived Threads user access token. It is valid for 60 days; refresh it as Meta describes and save the new one in the connection. This extension does not exchange or refresh tokens.
+- A long-lived Threads user access token, which you obtain yourself in your Meta app. Per Meta's documentation it is valid for 60 days; you renew it yourself, as Meta describes, and save the new one in the connection. The extension's steps never issue or renew tokens.
 - The permissions the steps name: `threads_basic` always, `threads_content_publish` to publish, `threads_read_replies` and `threads_manage_replies` for replies, `threads_manage_insights` for insights, `threads_delete` to delete, and `threads_keyword_search`, `threads_location_tagging`, `threads_manage_mentions` or `threads_profile_discovery` for the steps that name them.
-- Images and videos at public addresses: Threads downloads them itself. Images JPEG or PNG up to 8 MB; videos MP4 or MOV up to 1 GB and 5 minutes.
+- Images and videos at public URLs: Threads takes media only from a public URL, which it downloads itself, so a workflow file must first be published at a public URL. Images JPEG or PNG up to 8 MB; videos MP4 or MOV up to 1 GB and 5 minutes.
 - Flow Steward 0.9.23 or later.
 
 ## FAQ

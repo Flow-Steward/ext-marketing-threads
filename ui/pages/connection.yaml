@@ -33,7 +33,7 @@ components:
     body: |
       Threads gives the app the account owner authorized an access token, as described in Meta's [Get access tokens](https://developers.facebook.com/documentation/threads/get-started/get-access-tokens-and-permissions) guide. That one is short-lived (one hour); exchange it for a long-lived one (60 days) as described in [Long-lived tokens](https://developers.facebook.com/documentation/threads/get-started/long-lived-tokens), and paste it here.
 
-      This extension does not exchange or refresh tokens: Threads makes tokens long-lived or renews them only with its own requests and your app secret. Before the 60 days are over, refresh it as Meta describes and save the new one here.
+      You obtain and renew the long-lived access token, yourself; per Meta's documentation it is valid for 60 days. The extension's steps never issue or renew tokens: Threads makes tokens long-lived or renews them only with its own requests and your app secret. Before the 60 days are over, refresh it as Meta describes and save the new one here.
   - component_id: connection_help
     anchor_id: if-it-fails
     type: markdown

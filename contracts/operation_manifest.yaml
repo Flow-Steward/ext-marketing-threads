@@ -281,7 +281,8 @@ operations:
       type: string
       maxLength: 2000
       title: Image address
-      description: A public address of a JPEG or PNG image (up to 8 MB). Threads downloads it from there.
+      description: A public address of a JPEG or PNG image (up to 8 MB). Threads takes media only from
+        a public URL, which it downloads itself; a workflow file must first be published at a public URL.
   - name: video_url
     value_type: text
     required: false
@@ -289,8 +290,9 @@ operations:
       type: string
       maxLength: 2000
       title: Video address
-      description: A public address of an MP4 or MOV video (up to 1 GB, 5 minutes). Threads downloads
-        it from there.
+      description: A public address of an MP4 or MOV video (up to 1 GB, 5 minutes). Threads takes media
+        only from a public URL, which it downloads itself; a workflow file must first be published at
+        a public URL.
   - name: alt_text
     value_type: text
     required: false
@@ -311,7 +313,8 @@ operations:
       maxItems: 20
       title: Carousel items
       description: 'For a carousel: 2 to 20 objects, each with image_url or video_url and optional alt_text,
-        such as [{"image_url": "https://example.com/1.jpg"}].'
+        such as [{"image_url": "https://example.com/1.jpg"}]. Threads takes media only from a public URL,
+        which it downloads itself; a workflow file must first be published at a public URL.'
   - name: link_attachment
     value_type: text
     required: false
@@ -532,7 +535,8 @@ operations:
       type: string
       maxLength: 2000
       title: Image address
-      description: A public address of a JPEG or PNG image (up to 8 MB). Threads downloads it from there.
+      description: A public address of a JPEG or PNG image (up to 8 MB). Threads takes media only from
+        a public URL, which it downloads itself; a workflow file must first be published at a public URL.
   - name: video_url
     value_type: text
     required: false
@@ -540,8 +544,9 @@ operations:
       type: string
       maxLength: 2000
       title: Video address
-      description: A public address of an MP4 or MOV video (up to 1 GB, 5 minutes). Threads downloads
-        it from there.
+      description: A public address of an MP4 or MOV video (up to 1 GB, 5 minutes). Threads takes media
+        only from a public URL, which it downloads itself; a workflow file must first be published at
+        a public URL.
   - name: alt_text
     value_type: text
     required: false
@@ -1040,7 +1045,9 @@ operations:
       type: string
       maxLength: 2000
       title: image_url
-      description: The public URL of the image. Required if `media_type=IMAGE`.
+      description: The public URL of the image. Required if `media_type=IMAGE`. Threads takes media only
+        from a public URL, which it downloads itself; a workflow file must first be published at a public
+        URL.
   - name: video_url
     value_type: text
     required: false
@@ -1048,7 +1055,9 @@ operations:
       type: string
       maxLength: 2000
       title: video_url
-      description: The public URL of the video. Required if `media_type=VIDEO`.
+      description: The public URL of the video. Required if `media_type=VIDEO`. Threads takes media only
+        from a public URL, which it downloads itself; a workflow file must first be published at a public
+        URL.
   - name: is_made_with_ai
     value_type: boolean
     required: false

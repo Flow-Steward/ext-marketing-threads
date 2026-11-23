@@ -496,6 +496,11 @@ def step_inputs(entry: dict[str, Any]) -> list[dict[str, Any]]:
         words = prm["description"]
         if prm["name"] == "threads-user-id":
             words = "The Threads user ID, or me for the connected account (the default)."
+        if prm["name"] in {"image_url", "video_url"}:
+            words += (
+                " Threads takes media only from a public URL, which it downloads itself; a "
+                "workflow file must first be published at a public URL."
+            )
         if n["kind"] == "moment":
             words += " A Unix timestamp or a date such as 2026-01-01."
         if n["kind"] in {"names", "codes", "id_list"}:

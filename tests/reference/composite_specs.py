@@ -129,14 +129,14 @@ IMAGE_URL = {
     "type": "string",
     "maxLength": 2000,
     "title": "Image address",
-    "description": "A public address of a JPEG or PNG image (up to 8 MB). Threads downloads it from there.",
+    "description": "A public address of a JPEG or PNG image (up to 8 MB). Threads takes media only from a public URL, which it downloads itself; a workflow file must first be published at a public URL.",
 }
 VIDEO_URL = {
     "name": "video_url",
     "type": "string",
     "maxLength": 2000,
     "title": "Video address",
-    "description": "A public address of an MP4 or MOV video (up to 1 GB, 5 minutes). Threads downloads it from there.",
+    "description": "A public address of an MP4 or MOV video (up to 1 GB, 5 minutes). Threads takes media only from a public URL, which it downloads itself; a workflow file must first be published at a public URL.",
 }
 ALT_TEXT = {
     "name": "alt_text",
@@ -317,7 +317,7 @@ COMPOSITES: list[dict[str, Any]] = [
                 "minItems": 2,
                 "maxItems": 20,
                 "title": "Carousel items",
-                "description": 'For a carousel: 2 to 20 objects, each with image_url or video_url and optional alt_text, such as [{"image_url": "https://example.com/1.jpg"}].',
+                "description": 'For a carousel: 2 to 20 objects, each with image_url or video_url and optional alt_text, such as [{"image_url": "https://example.com/1.jpg"}]. Threads takes media only from a public URL, which it downloads itself; a workflow file must first be published at a public URL.',
             },
             {
                 "name": "link_attachment",

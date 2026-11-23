@@ -83,13 +83,15 @@ forms:
     label: Image address
     widget_type: text
     required: false
-    help_text: A public address of a JPEG or PNG image (up to 8 MB). Threads downloads it from there.
+    help_text: A public address of a JPEG or PNG image (up to 8 MB). Threads takes media only from a public
+      URL, which it downloads itself; a workflow file must first be published at a public URL.
   - name: video_url
     label: Video address
     widget_type: text
     required: false
-    help_text: A public address of an MP4 or MOV video (up to 1 GB, 5 minutes). Threads downloads it from
-      there.
+    help_text: A public address of an MP4 or MOV video (up to 1 GB, 5 minutes). Threads takes media only
+      from a public URL, which it downloads itself; a workflow file must first be published at a public
+      URL.
   - name: alt_text
     label: Alternative text
     widget_type: text
@@ -100,7 +102,8 @@ forms:
     widget_type: json
     required: false
     help_text: 'For a carousel: 2 to 20 objects, each with image_url or video_url and optional alt_text,
-      such as [{"image_url": "https://example.com/1.jpg"}].'
+      such as [{"image_url": "https://example.com/1.jpg"}]. Threads takes media only from a public URL,
+      which it downloads itself; a workflow file must first be published at a public URL.'
     placeholder: '[]'
   - name: link_attachment
     label: Link preview
@@ -161,13 +164,15 @@ forms:
     label: Image address
     widget_type: text
     required: false
-    help_text: A public address of a JPEG or PNG image (up to 8 MB). Threads downloads it from there.
+    help_text: A public address of a JPEG or PNG image (up to 8 MB). Threads takes media only from a public
+      URL, which it downloads itself; a workflow file must first be published at a public URL.
   - name: video_url
     label: Video address
     widget_type: text
     required: false
-    help_text: A public address of an MP4 or MOV video (up to 1 GB, 5 minutes). Threads downloads it from
-      there.
+    help_text: A public address of an MP4 or MOV video (up to 1 GB, 5 minutes). Threads takes media only
+      from a public URL, which it downloads itself; a workflow file must first be published at a public
+      URL.
   - name: alt_text
     label: Alternative text
     widget_type: text
@@ -333,12 +338,14 @@ forms:
     label: image_url
     widget_type: text
     required: false
-    help_text: The public URL of the image. Required if `media_type=IMAGE`.
+    help_text: The public URL of the image. Required if `media_type=IMAGE`. Threads takes media only from
+      a public URL, which it downloads itself; a workflow file must first be published at a public URL.
   - name: video_url
     label: video_url
     widget_type: text
     required: false
-    help_text: The public URL of the video. Required if `media_type=VIDEO`.
+    help_text: The public URL of the video. Required if `media_type=VIDEO`. Threads takes media only from
+      a public URL, which it downloads itself; a workflow file must first be published at a public URL.
   - name: is_made_with_ai
     label: is_made_with_ai
     widget_type: boolean
