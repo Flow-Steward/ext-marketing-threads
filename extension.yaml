@@ -1,0 +1,117 @@
+manifest_version: 2
+lifecycle:
+  data_schema_version: 1
+  data_migrations: []
+extension_id: flowsteward.threads
+kind: tool_provider
+version: 0.1.0
+release_stage: active
+billing_mode: free
+display_name: Threads
+description: 'Connect workflows to Threads, Meta''s text-first social network, through
+  the Threads API. Everyday steps publish text, image, video and carousel posts and
+  replies, read all your posts and the replies to a post, and read post and account
+  insights and your publishing limits.
+
+
+  Each of the 25 Threads API endpoints this release covers has its own step: media
+  containers and publishing, reposts and deletion, posts and keyword search, replies,
+  conversations and reply moderation, profiles and mentions, locations, insights and
+  embedding. A connection is one Threads account with its user access token.'
+vendor:
+  name: Flow Steward
+  support_url: https://github.com/Flow-Steward/ext-marketing-threads/issues
+  website_url: https://github.com/Flow-Steward/ext-marketing-threads
+listing:
+  category: marketing
+  tags:
+  - threads
+  - meta
+  - social-media
+  - posts
+  - replies
+  - insights
+  summary: Publish Threads posts and replies, moderate replies and read posts and
+    insights.
+  categories:
+  - marketing
+  - media
+  setup_summary: Create a Meta app with the Threads use case, authorize the Threads
+    account with the permissions your steps need, and save its long-lived user access
+    token, as the connection's secret.
+features:
+- tool
+- action
+required_scopes:
+- extension:invoke
+machine_auth:
+  service_account_key: svc_ext_threads
+  required_scopes:
+  - extension:invoke
+account_scope:
+  scope_type: project
+  description: Each Threads account is a project connection; a project may hold several.
+egress:
+  hosts:
+  - graph.threads.com
+external_effects:
+- operation_id: publish_post
+  effect_kind: threads_publish_post
+  channel: threads_api
+  idempotency: required
+  test_mode_behavior: suppress
+- operation_id: reply_to_post
+  effect_kind: threads_reply_to_post
+  channel: threads_api
+  idempotency: required
+  test_mode_behavior: suppress
+- operation_id: create_media_container
+  effect_kind: threads_create_media_container
+  channel: threads_api
+  idempotency: required
+  test_mode_behavior: suppress
+- operation_id: delete_post
+  effect_kind: threads_delete_post
+  channel: threads_api
+  idempotency: required
+  test_mode_behavior: suppress
+- operation_id: publish_media_container
+  effect_kind: threads_publish_media_container
+  channel: threads_api
+  idempotency: required
+  test_mode_behavior: suppress
+- operation_id: repost_post
+  effect_kind: threads_repost_post
+  channel: threads_api
+  idempotency: required
+  test_mode_behavior: suppress
+- operation_id: approve_or_ignore_pending_reply
+  effect_kind: threads_approve_or_ignore_pending_reply
+  channel: threads_api
+  idempotency: required
+  test_mode_behavior: suppress
+- operation_id: hide_or_unhide_reply
+  effect_kind: threads_hide_or_unhide_reply
+  channel: threads_api
+  idempotency: required
+  test_mode_behavior: suppress
+runtime:
+  contract_version: extension_host_v2
+  extension_contract_v2:
+    connection_types: contracts/connection_types.yaml
+    operation_manifest: contracts/operation_manifest.yaml
+    step_ui_manifest: contracts/step_ui_manifest.yaml
+entrypoint:
+  mode: subprocess
+  command:
+  - python3
+  - main.py
+  timeout_seconds: 600
+health:
+  command:
+  - python3
+  - health.py
+  timeout_seconds: 5
+ui_manifest: ui/ui_manifest.yaml
+action_manifest: ui/actions/actions.yaml
+python_requirements: []

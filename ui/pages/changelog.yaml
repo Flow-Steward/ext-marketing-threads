@@ -1,0 +1,12 @@
+page_id: changelog
+title: Changelog
+description: What changed in each version.
+components:
+  - component_id: changelog_0_1_0
+    type: markdown
+    title: 0.1.0
+    body: |
+      First version.
+
+      - Everyday steps: test the connection, get my profile, get all my posts, publish a text, image, video or carousel post, reply to a post or reply, get all replies to a post, get post and account insights, get publishing limits.
+      - A step for each of the 25 Threads API endpoints this release covers, built from the Threads documentation.

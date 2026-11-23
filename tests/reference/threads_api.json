@@ -1,0 +1,2514 @@
+{
+ "source": {
+  "site": "https://developers.facebook.com/documentation/threads/",
+  "downloaded": "2026-11-23",
+  "pages": [
+   {
+    "name": "reference_publishing.md",
+    "url": "https://developers.facebook.com/documentation/threads/reference/publishing.md",
+    "sha256": "2dfb3454fe95d66eaae42e9e0080d41414438d147e47507df6171299fe642c06",
+    "chars": 8033
+   },
+   {
+    "name": "reference_media-retrieval.md",
+    "url": "https://developers.facebook.com/documentation/threads/reference/media-retrieval.md",
+    "sha256": "f552b94ffce3975e0175d4f2ff57a26c4f745a4264e552f8ad7b7d21787a8727",
+    "chars": 3963
+   },
+   {
+    "name": "reference_reply-management.md",
+    "url": "https://developers.facebook.com/documentation/threads/reference/reply-management.md",
+    "sha256": "23e5f419ef56e4a75d2b89dfeae26fcd4cfada04f27e7f73c13be6173aeb9749",
+    "chars": 5576
+   },
+   {
+    "name": "reference_user.md",
+    "url": "https://developers.facebook.com/documentation/threads/reference/user.md",
+    "sha256": "576c1f31723080cc5f58d552ea006d904c81f4cc9c6dfa8af815da5d7e2d032c",
+    "chars": 8641
+   },
+   {
+    "name": "reference_locations.md",
+    "url": "https://developers.facebook.com/documentation/threads/reference/locations.md",
+    "sha256": "6ac63042691221fba56d977d2ec063365369cc4f3b1c079bfc76c3f1166dd831",
+    "chars": 731
+   },
+   {
+    "name": "reference_location-search.md",
+    "url": "https://developers.facebook.com/documentation/threads/reference/location-search.md",
+    "sha256": "cff68c6ed536b81c3c0e0b54d4c433a532be285e504b504d5bfca2b194d9294b",
+    "chars": 1024
+   },
+   {
+    "name": "reference_insights.md",
+    "url": "https://developers.facebook.com/documentation/threads/reference/insights.md",
+    "sha256": "5c1dd72c5d05bfb6651fc503f4a054b2413a298c493055439913dbcd5ebec04a",
+    "chars": 2334
+   },
+   {
+    "name": "reference_oembed.md",
+    "url": "https://developers.facebook.com/documentation/threads/reference/oembed.md",
+    "sha256": "bb3b49dbba230b57333f7f55dd61f628d906983ec9086fa76a6f93b315bf0f27",
+    "chars": 2013
+   },
+   {
+    "name": "reference_debug.md",
+    "url": "https://developers.facebook.com/documentation/threads/reference/debug.md",
+    "sha256": "8b0c8ffd2e75afb1e7b2c337da255207772a197f615cd3508edaadbaa35ddf09",
+    "chars": 1790
+   },
+   {
+    "name": "overview.md",
+    "url": "https://developers.facebook.com/documentation/threads/overview.md",
+    "sha256": "1ada3d1b5300946bc6c2e9bd8773fbfc8fc13d666d46185f5aaad4ceed7d5840",
+    "chars": 7826
+   },
+   {
+    "name": "posts.md",
+    "url": "https://developers.facebook.com/documentation/threads/posts.md",
+    "sha256": "42fa5417290d431aa4adecfa235b3a6f4979706b2ab7228671568fc6706850bc",
+    "chars": 19389
+   },
+   {
+    "name": "troubleshooting.md",
+    "url": "https://developers.facebook.com/documentation/threads/troubleshooting.md",
+    "sha256": "1e7f855fd3b9e1f8e22363684e032e23019eb363902f14794b8739f52a7cc31c",
+    "chars": 2741
+   },
+   {
+    "name": "reply-management.md",
+    "url": "https://developers.facebook.com/documentation/threads/reply-management.md",
+    "sha256": "b16c63d7c2e8e60d6aa690e4b75a70da88f7abb8b730b702b2956453993d49ef",
+    "chars": 6214
+   },
+   {
+    "name": "keyword-search.md",
+    "url": "https://developers.facebook.com/documentation/threads/keyword-search.md",
+    "sha256": "834f2291f6618ac997fc8e1f290114084626d619c46aeb593019113afda4f8aa",
+    "chars": 7140
+   },
+   {
+    "name": "trending-topics.md",
+    "url": "https://developers.facebook.com/documentation/threads/trending-topics.md",
+    "sha256": "8d45d36af384291f03704a33bc8fb27c5d4c3ba2b684340d3727328fb9aec80f",
+    "chars": 7488
+   },
+   {
+    "name": "posts_reposts.md",
+    "url": "https://developers.facebook.com/documentation/threads/posts/reposts.md",
+    "sha256": "e8153d7b99ed7b22fcac5d89ce4d0de7d672b1c3376dddfe8ac8be2351abbf4f",
+    "chars": 1846
+   },
+   {
+    "name": "posts_delete-posts.md",
+    "url": "https://developers.facebook.com/documentation/threads/posts/delete-posts.md",
+    "sha256": "fd182f55624b4959795e5d4b7deabc9666e15de82aab47eabee1b7eaf68a4952",
+    "chars": 1171
+   },
+   {
+    "name": "posts_accessibility.md",
+    "url": "https://developers.facebook.com/documentation/threads/posts/accessibility.md",
+    "sha256": "126dd75ae01a97bdacdb6e67e499e9eabaa12d1399504d8c9ad6acfc2eb91fd9",
+    "chars": 2624
+   },
+   {
+    "name": "insights.md",
+    "url": "https://developers.facebook.com/documentation/threads/insights.md",
+    "sha256": "da4cb24e5a48956ef53f1cff00d4361ffb84773b581e042337f090a0f4b2238a",
+    "chars": 6635
+   },
+   {
+    "name": "threads-mentions.md",
+    "url": "https://developers.facebook.com/documentation/threads/threads-mentions.md",
+    "sha256": "7715d6e10147b381839c55be2ef8ec9a38375a84e677cef6889452ee9fc7919f",
+    "chars": 1653
+   },
+   {
+    "name": "threads-profiles.md",
+    "url": "https://developers.facebook.com/documentation/threads/threads-profiles.md",
+    "sha256": "cf4ed6bdb470c40dd308c115a7ea3df38bba282dc4f7640dbf0915cc8fe2b919",
+    "chars": 4740
+   },
+   {
+    "name": "create-posts_location-tagging.md",
+    "url": "https://developers.facebook.com/documentation/threads/create-posts/location-tagging.md",
+    "sha256": "a4b46e5d63138dea47309fa31faf43e7c369dc30f906efac6f51ce2e3cec701a",
+    "chars": 5322
+   },
+   {
+    "name": "retrieve-and-discover-posts_retrieve-posts.md",
+    "url": "https://developers.facebook.com/documentation/threads/retrieve-and-discover-posts/retrieve-posts.md",
+    "sha256": "f485aa884589800317a68d8e17e12a96a5b18024016ed1400f9231e64b3176c8",
+    "chars": 11363
+   },
+   {
+    "name": "retrieve-and-manage-replies_retrieve-replies.md",
+    "url": "https://developers.facebook.com/documentation/threads/retrieve-and-manage-replies/retrieve-replies.md",
+    "sha256": "3720e0579acf5a1b507878eec1687dfa4156a4752105be9335c67ab622b59c47",
+    "chars": 4140
+   },
+   {
+    "name": "retrieve-and-manage-replies_create-replies.md",
+    "url": "https://developers.facebook.com/documentation/threads/retrieve-and-manage-replies/create-replies.md",
+    "sha256": "2f2dc5f074109584eac07557efbe047b0d8d3a46d12517742b227ef477020f20",
+    "chars": 2419
+   },
+   {
+    "name": "get-started_get-access-tokens-and-permissions.md",
+    "url": "https://developers.facebook.com/documentation/threads/get-started/get-access-tokens-and-permissions.md",
+    "sha256": "f627e9f3461b1b232662eb1a727303a8050b5e76a9f19081d5bd826c4f562545",
+    "chars": 6456
+   },
+   {
+    "name": "get-started_long-lived-tokens.md",
+    "url": "https://developers.facebook.com/documentation/threads/get-started/long-lived-tokens.md",
+    "sha256": "b43b6e93ed54262959f4a0941efcfc24e1f74462431fe23baa88c6cab4a3627b",
+    "chars": 3816
+   },
+   {
+    "name": "get-started_app-access-tokens.md",
+    "url": "https://developers.facebook.com/documentation/threads/get-started/app-access-tokens.md",
+    "sha256": "20adf1afb1143109fc437f7df2eea4cf62a89a23b584e5112d9d87d57f4dff8b",
+    "chars": 1587
+   },
+   {
+    "name": "webhooks.md",
+    "url": "https://developers.facebook.com/documentation/threads/webhooks.md",
+    "sha256": "49e8ed3136ef78e4f38aee43c283193b83b6db5ce59fedef2dd31470286e1eb7",
+    "chars": 9446
+   },
+   {
+    "name": "create-posts_polls.md",
+    "url": "https://developers.facebook.com/documentation/threads/create-posts/polls.md",
+    "sha256": "ba172e0e5977ff56adc6b35951394465a0d7fc0ec457366285a77b7618e45bb2",
+    "chars": 3190
+   },
+   {
+    "name": "get-started.md",
+    "url": "https://developers.facebook.com/documentation/threads/get-started.md",
+    "sha256": "84f42a6016f68de40d200413225bcc0268a87e2744a93c4e8039184a37f6b71f",
+    "chars": 6689
+   },
+   {
+    "name": "get-started_create-an-app.md",
+    "url": "https://developers.facebook.com/documentation/threads/get-started/create-an-app.md",
+    "sha256": "b3ec1e80bd57b35f8889553a85347ff63c5ff027e09eca412f659d61c4076af1",
+    "chars": 7453
+   },
+   {
+    "name": "posts_geo-gating.md",
+    "url": "https://developers.facebook.com/documentation/threads/posts/geo-gating.md",
+    "sha256": "d65970a6f1cf82b11445bb8bd12205c19db3ac89fe5e86850834e3b10299f94c",
+    "chars": 4131
+   },
+   {
+    "name": "graph_error-handling.html",
+    "url": "https://developers.facebook.com/docs/graph-api/guides/error-handling",
+    "sha256": "c157345cf13a5b6924f04c45877fc7f8fac1bc3f041782b0adc38db6229cec1c",
+    "chars": 4655
+   },
+   {
+    "name": "graph_rate-limiting.html",
+    "url": "https://developers.facebook.com/docs/graph-api/overview/rate-limiting",
+    "sha256": "3d2c31901131a3de684ef3908fc4114f5d5d144f8cd0bc3ae5c67d16deb83ba5",
+    "chars": 27904
+   }
+  ],
+  "machine_readable_specification": false
+ },
+ "operations": [
+  {
+   "method": "POST",
+   "path": "/{threads-user-id}/threads",
+   "heading": "/{threads-user-id}/threads",
+   "fixed_query": {},
+   "page": "reference_publishing.md",
+   "summary": "Upload media and create media containers. See Posts for more information.",
+   "params": [
+    {
+     "name": "threads-user-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads user identifier."
+    },
+    {
+     "name": "media_type",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": true,
+     "values": [
+      "TEXT",
+      "IMAGE",
+      "VIDEO",
+      "CAROUSEL"
+     ],
+     "default": null,
+     "description": "The type of media container to create. Values: `TEXT`, `IMAGE`, `VIDEO`, `CAROUSEL`"
+    },
+    {
+     "name": "text",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The text associated with the post. Uses UTF-8 encoding. Required for text-only posts. Note: For the post character limit, emojis are counted as the number of UTF-8 bytes."
+    },
+    {
+     "name": "image_url",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "URL string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The public URL of the image. Required if `media_type=IMAGE`."
+    },
+    {
+     "name": "video_url",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "URL string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The public URL of the video. Required if `media_type=VIDEO`."
+    },
+    {
+     "name": "is_made_with_ai",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": false,
+     "values": [
+      "true",
+      "false"
+     ],
+     "default": "false",
+     "description": "Set to `true` to disclose that a post contains AI-generated content and display the AI info label. Supported for `TEXT`, `IMAGE`, `VIDEO`, and `CAROUSEL` posts. Values: `true`, `false` (default) Set this parameter when creating the media container, not when calling `POST /{threads-user-id}/threads_publish`. For carousels, set it on the parent container. Setting `is_made_with_ai=true` on an individual carousel item (`is_carousel_item=true`) returns an error. Omitting this parameter or setting it to `false` does not add an AI self-disclosure. It does not prevent automatic AI labeling. See Label AI-generated content for an example."
+    },
+    {
+     "name": "is_carousel_item",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": false,
+     "values": [
+      "true",
+      "false"
+     ],
+     "default": "false",
+     "description": "Set to `true` if this container is an item in a carousel. Values: `true`, `false` (default)"
+    },
+    {
+     "name": "children",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "list of numeric strings",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A comma-separated list of the media container IDs of the carousel items. Required if `media_type=CAROUSEL`."
+    },
+    {
+     "name": "reply_to_id",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The ID of the post to reply to. Required if replying to a post."
+    },
+    {
+     "name": "reply_control",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "everyone",
+      "accounts_you_follow",
+      "mentioned_only",
+      "parent_post_author_only",
+      "followers_only"
+     ],
+     "default": null,
+     "description": "Specifies who can reply to the post. Values: `everyone`, `accounts_you_follow`, `mentioned_only`, `parent_post_author_only`, `followers_only`"
+    },
+    {
+     "name": "allowlisted_country_codes",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "list of strings",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A list of valid ISO 3166-1 alpha-2 country codes that represents the countries where this media should be shown. If this parameter is passed in, the media is not shown to Threads profiles in countries outside of this list."
+    },
+    {
+     "name": "alt_text",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The accessibility text label or description for an image or video in a Threads post. Note: The maximum length of `alt_text` is 1,000 characters."
+    },
+    {
+     "name": "link_attachment",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "URL string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The URL attached to a Threads post."
+    },
+    {
+     "name": "quote_post_id",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "ID of the post to quote."
+    },
+    {
+     "name": "poll_attachment",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "object",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The options for a post with a poll attachment."
+    },
+    {
+     "name": "auto_publish_text",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "When set to `true`, a Threads post is published automatically when a Threads media container is created without needing to go through the extra publish step. Note: This only works for text posts."
+    },
+    {
+     "name": "topic_tag",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The topic to add to a post. Note: The following characters are not allowed in topic tags: Periods (.) Ampersands (&)"
+    },
+    {
+     "name": "is_spoiler_media",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": false,
+     "values": [
+      "true",
+      "false"
+     ],
+     "default": null,
+     "description": "Whether the media should be a spoiler. Values: `true`, `false`"
+    },
+    {
+     "name": "text_entities",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "object",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The spoiler settings for the post."
+    },
+    {
+     "name": "text_attachment",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "object",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The text attachment for the post."
+    },
+    {
+     "name": "gif_attachment",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "object",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The ID and GIF provider for the GIF to attach to the post. Fields: `gif_id`, `provider`"
+    },
+    {
+     "name": "is_ghost_post",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": false,
+     "values": [
+      "true",
+      "false"
+     ],
+     "default": null,
+     "description": "Whether the post is a ghost post. Values: `true`, `false`"
+    },
+    {
+     "name": "enable_reply_approvals",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": false,
+     "values": [
+      "true",
+      "false"
+     ],
+     "default": null,
+     "description": "Whether the post should have reply approvals enabled. Values: `true`, `false`"
+    },
+    {
+     "name": "crossreshare_to_ig",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": false,
+     "values": [
+      "true",
+      "false"
+     ],
+     "default": "false",
+     "description": "Cross-shares a Threads post to a linked Instagram account as a Story when set to `true`. Values: `true`, `false` (default)"
+    },
+    {
+     "name": "crossreshare_to_ig_dark_mode",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": false,
+     "values": [
+      "true",
+      "false"
+     ],
+     "default": "false",
+     "description": "Cross-shares a Threads post to a linked Instagram account as a Story in dark mode when set to `true`. Values: `true`, `false` (default)"
+    },
+    {
+     "name": "location_id",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The ID of the location to tag. Note: Use the `GET /location_search` endpoint to find location IDs."
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "POST",
+   "path": "/{threads-user-id}/threads_publish",
+   "heading": "/{threads-user-id}/threads_publish",
+   "fixed_query": {},
+   "page": "reference_publishing.md",
+   "summary": "Publish uploaded media using their media containers. See Posts for more information.",
+   "params": [
+    {
+     "name": "threads-user-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads user identifier."
+    },
+    {
+     "name": "creation_id",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "Identifier of the Threads media container."
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-container-id}",
+   "heading": "/{threads-container-id}?fields=status",
+   "fixed_query": {
+    "fields": "status"
+   },
+   "page": "reference_publishing.md",
+   "summary": "Check the Threads media container publishing eligibility and status.",
+   "params": [
+    {
+     "name": "threads-container-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads media container identifier."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "id",
+      "status",
+      "error_message"
+     ],
+     "default": "status",
+     "description": "A comma-separated list of the fields to be returned. Values: `id` (default), `status` (default), `error_message`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "POST",
+   "path": "/{threads-media-id}/repost",
+   "heading": "/{threads-media-id}/repost",
+   "fixed_query": {},
+   "page": "reference_publishing.md",
+   "summary": "Repost a Threads post that was previously published. See Reposts for more information.",
+   "params": [
+    {
+     "name": "threads-media-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads media identifier."
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "DELETE",
+   "path": "/{threads-media-id}",
+   "heading": "/{threads-media-id}",
+   "fixed_query": {},
+   "page": "reference_publishing.md",
+   "summary": "Delete a Threads post. See Delete posts for more information.",
+   "params": [
+    {
+     "name": "threads-media-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads media identifier."
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-media-id}",
+   "heading": "/{threads-media-id}",
+   "fixed_query": {},
+   "page": "reference_media-retrieval.md",
+   "summary": "Retrieve a Threads media object. See Retrieve a single Threads media object for more information.",
+   "params": [
+    {
+     "name": "threads-media-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads media identifier."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "id",
+      "media_product_type",
+      "media_type",
+      "media_url",
+      "permalink",
+      "owner",
+      "username",
+      "text",
+      "timestamp",
+      "shortcode",
+      "thumbnail_url",
+      "children",
+      "is_quote_post",
+      "alt_text",
+      "link_attachment_url",
+      "has_replies",
+      "is_reply",
+      "is_reply_owned_by_me",
+      "root_post",
+      "replied_to",
+      "hide_status",
+      "reply_audience",
+      "quoted_post",
+      "reposted_post",
+      "gif_url",
+      "poll_attachment",
+      "topic_tag",
+      "is_spoiler_media",
+      "text_entities",
+      "text_attachment",
+      "location_id"
+     ],
+     "default": "id",
+     "description": "A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`, `media_type`, `media_url`, `permalink`, `owner`, `username`, `text`, `timestamp`, `shortcode`, `thumbnail_url`, `children`, `is_quote_post`, `alt_text`, `link_attachment_url`, `has_replies`, `is_reply`, `is_reply_owned_by_me`, `root_post`, `replied_to`, `hide_status`, `reply_audience`, `quoted_post`, `reposted_post`, `gif_url`, `poll_attachment`, `topic_tag`, `is_spoiler_media`, `text_entities`, `text_attachment`, `location_id`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/keyword_search",
+   "heading": "/keyword_search",
+   "fixed_query": {},
+   "page": "reference_media-retrieval.md",
+   "summary": "Search for public Threads media with specific keywords or topic tags. See Keyword search for more information.",
+   "params": [
+    {
+     "name": "q",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The keyword or keywords to search for."
+    },
+    {
+     "name": "search_type",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "TOP",
+      "RECENT"
+     ],
+     "default": "TOP",
+     "description": "Specifies the search behavior. Values: `TOP` (default) — Returns the most popular search results. `RECENT` — Returns the most recent search results."
+    },
+    {
+     "name": "search_mode",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "KEYWORD",
+      "TAG"
+     ],
+     "default": "KEYWORD",
+     "description": "Specifies the search mode. Values: `KEYWORD` (default) — The query is treated as a keyword. `TAG` — The query is treated as a topic tag."
+    },
+    {
+     "name": "media_type",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "TEXT",
+      "IMAGE",
+      "VIDEO"
+     ],
+     "default": null,
+     "description": "Specifies the type of media to search for. Only the media type values listed below are supported. Values: `TEXT` — The query searches for text posts. `IMAGE` — The query searches for image posts. `VIDEO` — The query searches for video posts."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "id",
+      "media_product_type",
+      "media_type",
+      "media_url",
+      "permalink",
+      "username",
+      "text",
+      "timestamp",
+      "shortcode",
+      "thumbnail_url",
+      "children",
+      "is_quote_post",
+      "alt_text",
+      "link_attachment_url",
+      "has_replies",
+      "is_reply",
+      "root_post",
+      "replied_to",
+      "reply_audience",
+      "quoted_post",
+      "reposted_post",
+      "gif_url",
+      "poll_attachment",
+      "topic_tag"
+     ],
+     "default": "id",
+     "description": "A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`, `media_type`, `media_url`, `permalink`, `username`, `text`, `timestamp`, `shortcode`, `thumbnail_url`, `children`, `is_quote_post`, `alt_text`, `link_attachment_url`, `has_replies`, `is_reply`, `root_post`, `replied_to`, `reply_audience`, `quoted_post`, `reposted_post`, `gif_url`, `poll_attachment`, `topic_tag`"
+    },
+    {
+     "name": "since",
+     "in": "query",
+     "range": null,
+     "earliest": 1688540400,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The start date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`). Must be on or after `1688540400` and before `until`."
+    },
+    {
+     "name": "until",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The end date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`). Must be after `since` and no later than the current time."
+    },
+    {
+     "name": "limit",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": [
+      25,
+      100
+     ],
+     "type": "int",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The maximum number of media objects or records to return. The default is `25` and the maximum is `100`. Only non-negative numbers are allowed."
+    },
+    {
+     "name": "author_username",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "Filters search results to include only posts created by the specified username. The username must be an exact match without the `@` symbol."
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-media-id}/replies",
+   "heading": "/{threads-media-id}/replies",
+   "fixed_query": {},
+   "page": "reference_reply-management.md",
+   "summary": "Retrieve a paginated list of all top-level replies for a Threads media object. See Replies for more information.",
+   "params": [
+    {
+     "name": "reverse",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": false,
+     "values": [
+      "true",
+      "false"
+     ],
+     "default": "true",
+     "description": "Whether to sort replies in reverse chronological order. Values: `true` (default), `false`"
+    },
+    {
+     "name": "before",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "after",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "threads-media-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads media identifier."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "id",
+      "media_product_type",
+      "media_type",
+      "media_url",
+      "permalink",
+      "username",
+      "text",
+      "timestamp",
+      "shortcode",
+      "thumbnail_url",
+      "children",
+      "is_quote_post",
+      "has_replies",
+      "root_post",
+      "replied_to",
+      "is_reply",
+      "is_reply_owned_by_me",
+      "hide_status",
+      "reply_audience",
+      "quoted_post",
+      "reposted_post",
+      "gif_url",
+      "topic_tag",
+      "is_verified",
+      "profile_picture_url"
+     ],
+     "default": "id",
+     "description": "A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`, `media_type`, `media_url`, `permalink`, `username`, `text`, `timestamp`, `shortcode`, `thumbnail_url`, `children`, `is_quote_post`, `has_replies`, `root_post`, `replied_to`, `is_reply`, `is_reply_owned_by_me`, `hide_status`, `reply_audience`, `quoted_post`, `reposted_post`, `gif_url`, `topic_tag`, `is_verified`, `profile_picture_url`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-media-id}/conversation",
+   "heading": "/{threads-media-id}/conversation",
+   "fixed_query": {},
+   "page": "reference_reply-management.md",
+   "summary": "Retrieve a paginated and flattened list of all top-level and nested replies for a Threads media object. See Conversations for more information.",
+   "params": [
+    {
+     "name": "reverse",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": false,
+     "values": [
+      "true",
+      "false"
+     ],
+     "default": "true",
+     "description": "Whether to sort replies in reverse chronological order. Values: `true` (default), `false`"
+    },
+    {
+     "name": "before",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "after",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "threads-media-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads media identifier."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "id",
+      "media_product_type",
+      "media_type",
+      "media_url",
+      "permalink",
+      "username",
+      "text",
+      "timestamp",
+      "shortcode",
+      "thumbnail_url",
+      "children",
+      "is_quote_post",
+      "has_replies",
+      "root_post",
+      "replied_to",
+      "is_reply",
+      "is_reply_owned_by_me",
+      "hide_status",
+      "reply_audience",
+      "quoted_post",
+      "reposted_post",
+      "gif_url",
+      "topic_tag",
+      "is_verified",
+      "profile_picture_url"
+     ],
+     "default": "id",
+     "description": "A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`, `media_type`, `media_url`, `permalink`, `username`, `text`, `timestamp`, `shortcode`, `thumbnail_url`, `children`, `is_quote_post`, `has_replies`, `root_post`, `replied_to`, `is_reply`, `is_reply_owned_by_me`, `hide_status`, `reply_audience`, `quoted_post`, `reposted_post`, `gif_url`, `topic_tag`, `is_verified`, `profile_picture_url`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "POST",
+   "path": "/{threads-reply-id}/manage_reply",
+   "heading": "/{threads-reply-id}/manage_reply",
+   "fixed_query": {},
+   "page": "reference_reply-management.md",
+   "summary": "Hide or unhide a top-level reply on your Threads post. See Hide replies for more information.",
+   "params": [
+    {
+     "name": "threads-reply-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the media identifier of the Threads reply."
+    },
+    {
+     "name": "hide",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": true,
+     "values": [
+      "true",
+      "false"
+     ],
+     "default": null,
+     "description": "Set to `true` to hide a reply and set to `false` to unhide a reply. Values: `true`, `false`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-media-id}/pending_replies",
+   "heading": "/{threads-media-id}/pending_replies",
+   "fixed_query": {},
+   "page": "reference_reply-management.md",
+   "summary": "Retrieve a paginated list of all pending replies for a Threads media object. See Reply approvals for more information.",
+   "params": [
+    {
+     "name": "reverse",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": false,
+     "values": [
+      "true",
+      "false"
+     ],
+     "default": "true",
+     "description": "Whether to sort replies in reverse chronological order. Values: `true` (default), `false`"
+    },
+    {
+     "name": "before",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "after",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "threads-media-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads media identifier."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "id",
+      "media_product_type",
+      "media_type",
+      "media_url",
+      "permalink",
+      "username",
+      "text",
+      "timestamp",
+      "shortcode",
+      "thumbnail_url",
+      "children",
+      "is_quote_post",
+      "has_replies",
+      "root_post",
+      "replied_to",
+      "is_reply",
+      "is_reply_owned_by_me",
+      "hide_status",
+      "reply_audience",
+      "quoted_post",
+      "reposted_post",
+      "gif_url",
+      "topic_tag",
+      "is_verified",
+      "profile_picture_url",
+      "reply_approval_status"
+     ],
+     "default": "id",
+     "description": "A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`, `media_type`, `media_url`, `permalink`, `username`, `text`, `timestamp`, `shortcode`, `thumbnail_url`, `children`, `is_quote_post`, `has_replies`, `root_post`, `replied_to`, `is_reply`, `is_reply_owned_by_me`, `hide_status`, `reply_audience`, `quoted_post`, `reposted_post`, `gif_url`, `topic_tag`, `is_verified`, `profile_picture_url`, `reply_approval_status`"
+    },
+    {
+     "name": "approval_status",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "pending",
+      "ignored"
+     ],
+     "default": null,
+     "description": "Values: (case-sensitive) `pending` — Show only pending replies. `ignored` — Show only ignored replies. Note: The default is to show all replies.",
+     "source": "reply-management.md (Retrieve pending replies)"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "POST",
+   "path": "/{threads-reply-id}/manage_pending_reply",
+   "heading": "/{threads-reply-id}/manage_pending_reply",
+   "fixed_query": {},
+   "page": "reference_reply-management.md",
+   "summary": "Approve or ignore a pending reply on your Threads post. See Reply approvals for more information.",
+   "params": [
+    {
+     "name": "threads-reply-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the media identifier of the Threads reply."
+    },
+    {
+     "name": "approve",
+     "in": "form",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "Boolean",
+     "required": true,
+     "values": [
+      "true",
+      "false"
+     ],
+     "default": null,
+     "description": "Set to `true` to approve a reply, and set to `false` to ignore a reply. Values: `true`, `false`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-user-id}/threads",
+   "heading": "/{threads-user-id}/threads",
+   "fixed_query": {},
+   "page": "reference_user.md",
+   "summary": "Retrieve a paginated list of all Threads posts created by a user. See Retrieve a list of an app-scoped user's posts for more information.",
+   "params": [
+    {
+     "name": "since",
+     "in": "query",
+     "range": null,
+     "earliest": 1688540400,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The start date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`). Must be on or after `1688540400` and before `until`."
+    },
+    {
+     "name": "until",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The end date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`). Must be after `since` and no later than the current time."
+    },
+    {
+     "name": "limit",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": [
+      25,
+      100
+     ],
+     "type": "int",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The maximum number of media objects or records to return. The default is `25` and the maximum is `100`. Only non-negative numbers are allowed."
+    },
+    {
+     "name": "before",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "after",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "threads-user-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads user identifier."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "id",
+      "media_product_type",
+      "media_type",
+      "media_url",
+      "permalink",
+      "owner",
+      "username",
+      "text",
+      "timestamp",
+      "shortcode",
+      "thumbnail_url",
+      "children",
+      "is_quote_post",
+      "alt_text",
+      "link_attachment_url",
+      "has_replies",
+      "reply_audience",
+      "quoted_post",
+      "reposted_post",
+      "gif_url",
+      "is_spoiler_media",
+      "text_entities",
+      "text_attachment",
+      "is_verified",
+      "profile_picture_url"
+     ],
+     "default": "id",
+     "description": "A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`, `media_type`, `media_url`, `permalink`, `owner`, `username`, `text`, `timestamp`, `shortcode`, `thumbnail_url`, `children`, `is_quote_post`, `alt_text`, `link_attachment_url`, `has_replies`, `reply_audience`, `quoted_post`, `reposted_post`, `gif_url`, `is_spoiler_media`, `text_entities`, `text_attachment`, `is_verified`, `profile_picture_url`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-user-id}",
+   "heading": "/{threads-user-id}?fields=id,username,...",
+   "fixed_query": {
+    "fields": "id,username,..."
+   },
+   "page": "reference_user.md",
+   "summary": "{#get---threads-user-id--fields-id-username----}",
+   "params": [
+    {
+     "name": "threads-user-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads user identifier."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "id",
+      "username",
+      "name",
+      "threads_profile_picture_url",
+      "threads_biography",
+      "is_verified",
+      "recently_searched_keywords"
+     ],
+     "default": "id",
+     "description": "A comma-separated list of the fields to be returned. Values: `id` (default), `username`, `name`, `threads_profile_picture_url`, `threads_biography`, `is_verified`, `recently_searched_keywords`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/profile_lookup",
+   "heading": "/profile_lookup?username=...",
+   "fixed_query": {},
+   "page": "reference_user.md",
+   "summary": "Look up a public profile and retrieve its basic profile information. See Retrieve a Threads user's public profile information for more information.",
+   "params": [
+    {
+     "name": "username",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "Handle or unique username on Threads. Must be an exact match."
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/profile_posts",
+   "heading": "/profile_posts?username=...",
+   "fixed_query": {},
+   "page": "reference_user.md",
+   "summary": "Look up a public profile and retrieve its posts on Threads. See Retrieve a list of a public profile's posts for more information.",
+   "params": [
+    {
+     "name": "since",
+     "in": "query",
+     "range": null,
+     "earliest": 1688540400,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The start date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`). Must be on or after `1688540400` and before `until`."
+    },
+    {
+     "name": "until",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The end date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`). Must be after `since` and no later than the current time."
+    },
+    {
+     "name": "limit",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": [
+      25,
+      100
+     ],
+     "type": "int",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The maximum number of media objects or records to return. The default is `25` and the maximum is `100`. Only non-negative numbers are allowed."
+    },
+    {
+     "name": "before",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "after",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "username",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "Handle or unique username on Threads. Must be an exact match."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "id",
+      "media_product_type",
+      "media_type",
+      "media_url",
+      "permalink",
+      "username",
+      "text",
+      "timestamp",
+      "shortcode",
+      "thumbnail_url",
+      "children",
+      "is_quote_post",
+      "alt_text",
+      "link_attachment_url",
+      "has_replies",
+      "reply_audience",
+      "quoted_post",
+      "reposted_post",
+      "gif_url",
+      "is_spoiler_media",
+      "text_entities"
+     ],
+     "default": "id",
+     "description": "A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`, `media_type`, `media_url`, `permalink`, `username`, `text`, `timestamp`, `shortcode`, `thumbnail_url`, `children`, `is_quote_post`, `alt_text`, `link_attachment_url`, `has_replies`, `reply_audience`, `quoted_post`, `reposted_post`, `gif_url`, `is_spoiler_media`, `text_entities`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-user-id}/threads_publishing_limit",
+   "heading": "/{threads-user-id}/threads_publishing_limit",
+   "fixed_query": {},
+   "page": "reference_user.md",
+   "summary": "Check the app user's current publishing rate limit usage. See Rate limiting for more information.",
+   "params": [
+    {
+     "name": "threads-user-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads user identifier."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "quota_usage",
+      "config",
+      "reply_quota_usage",
+      "reply_config",
+      "delete_quota_usage",
+      "delete_config",
+      "location_search_quota_usage",
+      "location_search_config"
+     ],
+     "default": "quota_usage",
+     "description": "A comma-separated list of the fields to be returned. Values: `quota_usage` (default), `config`, `reply_quota_usage`, `reply_config`, `delete_quota_usage`, `delete_config`, `location_search_quota_usage`, `location_search_config`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-user-id}/replies",
+   "heading": "/{threads-user-id}/replies",
+   "fixed_query": {},
+   "page": "reference_user.md",
+   "summary": "Retrieve a paginated list of all Threads replies created by a user. See Retrieve a list of a user's replies for more information.",
+   "params": [
+    {
+     "name": "since",
+     "in": "query",
+     "range": null,
+     "earliest": 1688540400,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The start date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`). Must be on or after `1688540400` and before `until`."
+    },
+    {
+     "name": "until",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The end date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`). Must be after `since` and no later than the current time."
+    },
+    {
+     "name": "limit",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": [
+      25,
+      100
+     ],
+     "type": "int",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The maximum number of media objects or records to return. The default is `25` and the maximum is `100`. Only non-negative numbers are allowed."
+    },
+    {
+     "name": "before",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "after",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "threads-user-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads user identifier."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "id",
+      "media_product_type",
+      "media_type",
+      "media_url",
+      "permalink",
+      "username",
+      "text",
+      "timestamp",
+      "shortcode",
+      "thumbnail_url",
+      "children",
+      "is_quote_post",
+      "has_replies",
+      "root_post",
+      "replied_to",
+      "is_reply",
+      "is_reply_owned_by_me",
+      "reply_audience",
+      "quoted_post",
+      "reposted_post",
+      "gif_url",
+      "is_verified",
+      "profile_picture_url"
+     ],
+     "default": "id",
+     "description": "A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`, `media_type`, `media_url`, `permalink`, `username`, `text`, `timestamp`, `shortcode`, `thumbnail_url`, `children`, `is_quote_post`, `has_replies`, `root_post`, `replied_to`, `is_reply`, `is_reply_owned_by_me`, `reply_audience`, `quoted_post`, `reposted_post`, `gif_url`, `is_verified`, `profile_picture_url`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-user-id}/mentions",
+   "heading": "/{threads-user-id}/mentions",
+   "fixed_query": {},
+   "page": "reference_user.md",
+   "summary": "Retrieve a paginated list of all Threads posts where a user is mentioned. See Mentions for more information.",
+   "params": [
+    {
+     "name": "since",
+     "in": "query",
+     "range": null,
+     "earliest": 1688540400,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The start date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`). Must be on or after `1688540400` and before `until`."
+    },
+    {
+     "name": "until",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The end date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`). Must be after `since` and no later than the current time."
+    },
+    {
+     "name": "limit",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": [
+      25,
+      100
+     ],
+     "type": "int",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The maximum number of media objects or records to return. The default is `25` and the maximum is `100`. Only non-negative numbers are allowed."
+    },
+    {
+     "name": "before",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "after",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "threads-user-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads user identifier."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A comma-separated list of the fields to be returned. If omitted, the default fields are returned."
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-user-id}/ghost_posts",
+   "heading": "/{threads-user-id}/ghost_posts",
+   "fixed_query": {},
+   "page": "reference_user.md",
+   "summary": "Retrieve a paginated list of all Threads ghost posts created by a user. See Retrieve a list of an app-scoped user's ghost posts for more information.",
+   "params": [
+    {
+     "name": "since",
+     "in": "query",
+     "range": null,
+     "earliest": 1688540400,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The start date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`). Must be on or after `1688540400` and before `until`."
+    },
+    {
+     "name": "until",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The end date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`). Must be after `since` and no later than the current time."
+    },
+    {
+     "name": "limit",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": [
+      25,
+      100
+     ],
+     "type": "int",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The maximum number of media objects or records to return. The default is `25` and the maximum is `100`. Only non-negative numbers are allowed."
+    },
+    {
+     "name": "before",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "after",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A cursor for pagination. You cannot pass both `before` and `after` in the same request."
+    },
+    {
+     "name": "threads-user-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads user identifier."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "A comma-separated list of the fields to be returned. If omitted, the default fields are returned."
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{location-id}",
+   "heading": "/{location-id}",
+   "fixed_query": {},
+   "page": "reference_locations.md",
+   "summary": "Retrieve a location by its ID.",
+   "params": [
+    {
+     "name": "location-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads location identifier."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "id",
+      "name",
+      "address",
+      "city",
+      "country",
+      "latitude",
+      "longitude",
+      "postal_code"
+     ],
+     "default": "id",
+     "description": "A comma-separated list of the fields to be returned. Values: `id` (default), `name`, `address`, `city`, `country`, `latitude`, `longitude`, `postal_code`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/location_search",
+   "heading": "/location_search",
+   "fixed_query": {},
+   "page": "reference_location-search.md",
+   "summary": "Search for locations by query or by coordinates.",
+   "params": [
+    {
+     "name": "query",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The query string to search for."
+    },
+    {
+     "name": "latitude",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "float",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The latitude coordinate to search for. This must be used with `longitude`."
+    },
+    {
+     "name": "longitude",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "float",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "The longitude coordinate to search for. This must be used with `latitude`."
+    },
+    {
+     "name": "fields",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "id",
+      "name",
+      "address",
+      "city",
+      "country",
+      "latitude",
+      "longitude",
+      "postal_code"
+     ],
+     "default": "id",
+     "description": "A comma-separated list of the fields to be returned. Values: `id` (default), `name`, `address`, `city`, `country`, `latitude`, `longitude`, `postal_code`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-media-id}/insights",
+   "heading": "/{threads-media-id}/insights",
+   "fixed_query": {},
+   "page": "reference_insights.md",
+   "summary": "Retrieve insights for a Threads media object. See Media insights for more information.",
+   "params": [
+    {
+     "name": "threads-media-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads media identifier."
+    },
+    {
+     "name": "metric",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": true,
+     "values": [
+      "views",
+      "likes",
+      "replies",
+      "reposts",
+      "quotes",
+      "shares"
+     ],
+     "default": null,
+     "description": "A comma-separated list of the metrics to be returned. Must be at least one of the metric values. Values: `views`, `likes`, `replies`, `reposts`, `quotes`, `shares`"
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/{threads-user-id}/threads_insights",
+   "heading": "/{threads-user-id}/threads_insights",
+   "fixed_query": {},
+   "page": "reference_insights.md",
+   "summary": "Retrieve insights for a Threads user. See User insights for more information.",
+   "params": [
+    {
+     "name": "threads-user-id",
+     "in": "path",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "numeric string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The path parameter of the Threads user identifier."
+    },
+    {
+     "name": "since",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "Used in conjunction with the `until` parameter to define a range. If you omit `since` and `until`, it defaults to a 2-day range: yesterday through today. Format: A Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`)"
+    },
+    {
+     "name": "until",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "datetime",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "Used in conjunction with the `since` parameter to define a range. If you omit `since` and `until`, it defaults to a 2-day range: yesterday through today. Format: A Unix timestamp (such as `1767225600`) or a date (such as `2026-01-01`)"
+    },
+    {
+     "name": "metric",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": true,
+     "values": [
+      "views",
+      "likes",
+      "replies",
+      "reposts",
+      "quotes",
+      "clicks",
+      "followers_count",
+      "follower_demographics"
+     ],
+     "default": null,
+     "description": "A comma-separated list of the metrics to be returned. Must be at least one of the metric values. Values: `views`, `likes`, `replies`, `reposts`, `quotes`, `clicks`, `followers_count`, `follower_demographics` Note: `follower_demographics` is not compatible with the `since` and `until` parameters."
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": []
+  },
+  {
+   "method": "GET",
+   "path": "/oembed",
+   "heading": "/oembed?url=...",
+   "fixed_query": {},
+   "page": "reference_oembed.md",
+   "summary": "Retrieve the embed HTML code snippet and metadata of a post or profile.",
+   "params": [
+    {
+     "name": "url",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "URL string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "Permanent link to the post or profile on Threads. Accepted formats: `https://www.threads.com/@{username}/post/{media-shortcode}` `https://www.threads.com/t/{media-shortcode}` `https://www.threads.com/@{username}` Examples: https://www.threads.com/@meta/post/DDzbnVKx57R https://www.threads.com/t/DDzbnVKx57R https://www.threads.com/@meta"
+    },
+    {
+     "name": "maxwidth",
+     "in": "query",
+     "range": [
+      320,
+      658
+     ],
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "int",
+     "required": false,
+     "values": [],
+     "default": null,
+     "description": "Maximum width of returned media. Must be between 320 and 658 pixels. Note: The `maxheight` parameter is not supported because the embed code is responsive and its height varies depending on its width."
+    },
+    {
+     "name": "theme",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": false,
+     "values": [
+      "light",
+      "dark",
+      "auto"
+     ],
+     "default": null,
+     "description": "Display mode for the embed. Accepted values: `light`: Always use light mode. This is the default if you omit `theme`. `dark`: Always use dark mode. `auto`: Automatically use light or dark mode based on the viewer's preferred appearance settings."
+    }
+   ],
+   "token_documented": false,
+   "answer_fields": [
+    "html",
+    "provider_name",
+    "provider_url",
+    "type",
+    "version",
+    "width"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/debug_token",
+   "heading": "/debug_token",
+   "fixed_query": {},
+   "page": "reference_debug.md",
+   "summary": "Retrieve information about an access token, such as its type, scopes, validity, and expiration.",
+   "params": [
+    {
+     "name": "input_token",
+     "in": "query",
+     "range": null,
+     "earliest": null,
+     "default_and_maximum": null,
+     "type": "string",
+     "required": true,
+     "values": [],
+     "default": null,
+     "description": "The access token to inspect."
+    }
+   ],
+   "token_documented": true,
+   "answer_fields": [
+    "data",
+    "type",
+    "application",
+    "data_access_expires_at",
+    "expires_at",
+    "is_valid",
+    "issued_at",
+    "scopes",
+    "user_id"
+   ]
+  }
+ ],
+ "guide_operations": [
+  {
+   "method": "GET",
+   "path": "/trending_topics",
+   "page": "trending-topics.md",
+   "shown_as": "GET graph.threads.com/trending_topics"
+  },
+  {
+   "method": "GET",
+   "path": "/{trend-id}/posts",
+   "page": "trending-topics.md",
+   "shown_as": "GET graph.threads.com/{trend-id}/posts"
+  },
+  {
+   "method": "POST",
+   "path": "/oauth/access_token",
+   "page": "get-started_get-access-tokens-and-permissions.md",
+   "shown_as": "POST https://graph.threads.com/oauth/access_token"
+  },
+  {
+   "method": "GET",
+   "path": "/access_token",
+   "page": "get-started_long-lived-tokens.md",
+   "shown_as": "GET /access_token"
+  },
+  {
+   "method": "GET",
+   "path": "/refresh_access_token",
+   "page": "get-started_long-lived-tokens.md",
+   "shown_as": "GET /refresh_access_token"
+  }
+ ],
+ "limits": {
+  "hosts": [
+   "graph.threads.com",
+   "graph.threads.net"
+  ],
+  "api_version": "v1.0",
+  "text_max_characters": 500,
+  "carousel_max_children": 20,
+  "carousel_min_children": 2,
+  "image_max_mb": 8,
+  "video_max_gb": 1,
+  "video_max_seconds": 300,
+  "alt_text_max_characters": 1000,
+  "topic_tag_max_characters": 50,
+  "links_max": 5,
+  "posts_per_24h": 250,
+  "replies_per_24h": 1000,
+  "deletes_per_24h": 100,
+  "location_searches_per_24h": 500,
+  "keyword_queries_per_24h": 2200,
+  "wait_before_publish_seconds": 30,
+  "status_checks_per_minute": 1,
+  "status_check_max_minutes": 5,
+  "container_expires_hours": 24,
+  "container_statuses": [
+   "EXPIRED",
+   "ERROR",
+   "FINISHED",
+   "IN_PROGRESS",
+   "PUBLISHED"
+  ],
+  "container_error_messages": [
+   "FAILED_DOWNLOADING_VIDEO",
+   "FAILED_PROCESSING_AUDIO",
+   "FAILED_PROCESSING_VIDEO",
+   "INVALID_ASPEC_RATIO",
+   "INVALID_BIT_RATE",
+   "INVALID_DURATION",
+   "INVALID_FRAME_RATE",
+   "INVALID_AUDIO_CHANNELS",
+   "INVALID_AUDIO_CHANNEL_LAYOUT",
+   "UNKNOWN"
+  ],
+  "image_formats": "JPEG and PNG",
+  "media_by_public_url": true,
+  "list_example": "US,CA",
+  "object_example": "{\"option_a\":\"first option\", \"option_b\":\"second option\"}"
+ },
+ "user_insights": {
+  "earliest": 1712991600,
+  "metrics": {
+   "views": "Time Series",
+   "likes": "Total Value",
+   "replies": "Total Value",
+   "reposts": "Total Value",
+   "quotes": "Total Value",
+   "clicks": "Link Total Values",
+   "followers_count": "Total Value",
+   "follower_demographics": "Total Value"
+  },
+  "without_since_until": [
+   "followers_count",
+   "follower_demographics"
+  ],
+  "breakdown_metric": "follower_demographics",
+  "breakdown_values": [
+   "country",
+   "city",
+   "age",
+   "gender"
+  ]
+ },
+ "permissions": {
+  "described": {
+   "threads_basic": "Required for making any calls to all Threads API endpoints.",
+   "threads_content_publish": "Required for Threads publishing endpoints only.",
+   "threads_delete": "Required for making any delete calls.",
+   "threads_keyword_search": "Required for making `GET` calls to the keyword search endpoint.",
+   "threads_location_tagging": "Required for making `GET` calls to the location search endpoint and for making `POST` calls to the publishing endpoints with a location tag.",
+   "threads_manage_insights": "Required for making `GET` calls to insights endpoints.",
+   "threads_manage_mentions": "Required for making any calls to the mentions endpoint.",
+   "threads_manage_replies": "Required for creating replies with the `reply_to_id` parameter.",
+   "threads_profile_discovery": "Required for making any calls to all Threads Profile Discovery API endpoints.",
+   "threads_read_replies": "Required for making `GET` calls to reply endpoints."
+  },
+  "use_case_permissions": [
+   "threads_basic",
+   "threads_content_publish",
+   "threads_delete",
+   "threads_keyword_search",
+   "threads_location_tagging",
+   "threads_manage_insights",
+   "threads_manage_mentions",
+   "threads_manage_replies",
+   "threads_profile_discovery",
+   "threads_read_replies"
+  ],
+  "authorization_scopes": [
+   "threads_basic",
+   "threads_content_publish",
+   "threads_read_replies",
+   "threads_manage_replies",
+   "threads_manage_insights"
+  ]
+ },
+ "auth": {
+  "authorization_url": "https://threads.com/oauth/authorize",
+  "token_url": "https://graph.threads.com/oauth/access_token",
+  "code_exchange_answer_fields": [
+   "access_token",
+   "token_type",
+   "user_id"
+  ],
+  "short_lived": true,
+  "long_lived_days": 60,
+  "long_lived_grant": "th_exchange_token",
+  "refresh_grant": "th_refresh_token",
+  "refresh_takes_a_refresh_token": false,
+  "scope_separator": true,
+  "pkce_documented": false
+ },
+ "graph": {
+  "error_form_keys": [
+   "error",
+   "message",
+   "type",
+   "code",
+   "error_subcode",
+   "error_user_title",
+   "error_user_msg",
+   "fbtrace_id"
+  ],
+  "throttle_codes": [
+   4,
+   17,
+   32,
+   613
+  ],
+  "token_codes": [
+   102,
+   190
+  ],
+  "permission_codes": [
+   10,
+   "200-299"
+  ],
+  "usage_headers": [
+   "X-App-Usage",
+   "X-Business-Use-Case-Usage"
+  ]
+ }
+}
