@@ -69,12 +69,10 @@ def test_every_result_has_warnings_and_rate_limit_usage() -> None:
 
 def test_identity_and_links() -> None:
     data = manifest()
-    assert BUNDLE.name == "flowsteward_threads"
-    assert (
-        data["extension_id"]
-        == "flowsteward.threads"
-        == "flowsteward." + BUNDLE.name.split("_", 1)[1]
-    )
+    # Flow Steward installs the bundle in a folder named after the id ("." and "-" become
+    # "_"); the checkout folder itself may have any name (the repository's, on GitHub).
+    assert data["extension_id"] == "flowsteward.threads"
+    assert data["extension_id"].replace(".", "_").replace("-", "_") == "flowsteward_threads"
     assert data["version"] == "0.1.0"
     assert data["vendor"] == {
         "name": "Flow Steward",
