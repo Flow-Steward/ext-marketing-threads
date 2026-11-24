@@ -158,11 +158,21 @@ def single_page(context: Context, entry: Mapping[str, Any], data: Any) -> dict[s
     }
 
 
-def processing_of(entry: Mapping[str, Any], data: Any) -> dict[str, Any]:
+def auto_published(call: Call | None) -> bool:
+    """A text container created with ``auto_publish_text=true``: the Publishing
+    reference says "a Threads post is published automatically when a Threads media
+    container is created without needing to go through the extra publish step", and
+    "This only works for text posts"."""
+    form = set(call.form or ()) if call is not None else set()
+    return ("auto_publish_text", "true") in form and ("media_type", "TEXT") in form
+
+
+def processing_of(entry: Mapping[str, Any], data: Any, call: Call | None = None) -> dict[str, Any]:
     """What Threads' answer to a write confirms: the change made (completed), or a media
-    container created, which Threads processes before it can be published (accepted)."""
+    container created, which Threads processes before it can be published (accepted).
+    A text container Threads publishes by itself (``auto_publish_text``) is completed."""
     facts = entry["processing"]
-    if facts["accepted"]:
+    if facts["accepted"] and not auto_published(call):
         return {
             "processing": "accepted",
             "applied": False,
@@ -174,11 +184,13 @@ def processing_of(entry: Mapping[str, Any], data: Any) -> dict[str, Any]:
     return {"processing": "completed", "applied": True, "check": None}
 
 
-def write_result(context: Context, entry: Mapping[str, Any], answer: Answer) -> dict[str, Any]:
+def write_result(
+    context: Context, entry: Mapping[str, Any], answer: Answer, call: Call | None = None
+) -> dict[str, Any]:
     data = outcome.write_outcome(context, entry["write_class"], answer, entry["shown"])
     result: dict[str, Any] = {"status": answer.status, "data": data}
     result["id"] = outcome.identifier_of(data) if entry["write_class"] == outcome.NEEDS_ID else None
-    result.update(processing_of(entry, data))
+    result.update(processing_of(entry, data, call))
     return result
 
 
@@ -211,7 +223,7 @@ def run(context: Context, operation_id: str) -> dict[str, Any]:
         budget.ensure_fits(result)
         return result
     answer = context.transport.write(call)
-    result = write_result(context, entry, answer)
+    result = write_result(context, entry, answer, call)
     result["warnings"] = []
     result["rate_limit_usage"] = context.transport.usage_report()
     return result

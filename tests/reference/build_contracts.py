@@ -340,6 +340,11 @@ def describe(op: dict[str, Any], step: dict[str, Any], entry: dict[str, Any]) ->
             "processing accepted and the container ID; read its status with Get media container "
             "status and publish it with Publish media container."
         )
+        if any(p["name"] == "auto_publish_text" for p in op.get("params", [])):
+            words.append(
+                "A TEXT container with auto_publish_text true is published by Threads without "
+                "the publish step: then processing is completed, applied true and no check."
+            )
     if op["path"] == "/oembed":
         words.append("The documentation calls it without an access token; none is sent.")
     if step["permissions"]:

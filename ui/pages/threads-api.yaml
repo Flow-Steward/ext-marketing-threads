@@ -33,7 +33,7 @@ components:
   type: markdown
   title: Publishing
   body: |
-    - **Create media container** (`create_media_container`, changes data in Threads; `POST /{threads-user-id}/threads`) — Upload media and create media containers. Threads processes the container before it can be published: the step returns processing accepted and the container ID; read its status with Get media container status and publish it with Publish media container. Needs threads_basic, threads_content_publish.
+    - **Create media container** (`create_media_container`, changes data in Threads; `POST /{threads-user-id}/threads`) — Upload media and create media containers. Threads processes the container before it can be published: the step returns processing accepted and the container ID; read its status with Get media container status and publish it with Publish media container. A TEXT container with auto_publish_text true is published by Threads without the publish step: then processing is completed, applied true and no check. Needs threads_basic, threads_content_publish.
     - **Delete a post** (`delete_post`, changes data in Threads; `DELETE /{threads-media-id}`) — Delete a Threads post. Needs threads_basic, threads_delete.
     - **Get media container status** (`get_media_container_status`, reads only; `GET /{threads-container-id}`) — Check the Threads media container publishing eligibility and status. Needs threads_basic, threads_content_publish.
     - **Publish media container** (`publish_media_container`, changes data in Threads; `POST /{threads-user-id}/threads_publish`) — Publish uploaded media using their media containers. Needs threads_basic, threads_content_publish.

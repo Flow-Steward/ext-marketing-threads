@@ -997,7 +997,9 @@ operations:
   display_name: Create media container
   description: 'Upload media and create media containers. Threads processes the container before it can
     be published: the step returns processing accepted and the container ID; read its status with Get
-    media container status and publish it with Publish media container. Needs threads_basic, threads_content_publish.'
+    media container status and publish it with Publish media container. A TEXT container with auto_publish_text
+    true is published by Threads without the publish step: then processing is completed, applied true
+    and no check. Needs threads_basic, threads_content_publish.'
   operation_kind: action
   category: marketing
   connection_type_ids:

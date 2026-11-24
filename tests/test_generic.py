@@ -212,3 +212,39 @@ def test_every_list_endpoint_is_a_paged_step() -> None:
         "get_post_conversation",
         "get_pending_replies",
     }
+
+
+def test_a_text_container_published_automatically_is_completed() -> None:
+    """Publishing reference, auto_publish_text: "a Threads post is published
+    automatically when a Threads media container is created without needing to go
+    through the extra publish step"; "This only works for text posts"."""
+    fake = FakeThreads(ok({"id": "17890"}))
+    given = {"media_type": "TEXT", "text": "Hello", "auto_publish_text": True}
+    response = run("create_media_container", given, fake)
+    assert response["ok"] is True, response
+    assert fake.calls[0].form["auto_publish_text"] == "true"
+    assert len(fake.calls) == 1
+    result = response["result"]
+    assert result["processing"] == "completed"
+    assert result["applied"] is True
+    assert result["check"] is None
+    assert result["id"] == "17890"
+
+
+@pytest.mark.parametrize(
+    "given",
+    [
+        {"media_type": "TEXT", "text": "Hello"},
+        {"media_type": "TEXT", "text": "Hello", "auto_publish_text": False},
+        {
+            "media_type": "IMAGE",
+            "image_url": "https://example.com/a.jpg",
+            "auto_publish_text": True,
+        },
+    ],
+)
+def test_other_containers_are_still_accepted(given: dict[str, Any]) -> None:
+    response = run("create_media_container", given, FakeThreads(ok({"id": "9"})))
+    assert response["result"]["processing"] == "accepted"
+    assert response["result"]["applied"] is False
+    assert response["result"]["check"]["container_id"] == "9"
