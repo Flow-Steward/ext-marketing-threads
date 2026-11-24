@@ -44,12 +44,18 @@ NEEDS_ID = "needs_id"
 CLASSES = (CONFIRM, NEEDS_ID)
 
 
+#: Bytes looked at for the first character of a JSON answer (our decision).
+JSON_START_WINDOW = 4096
+#: A Threads ID is a number of up to this many digits (our bound; Meta's IDs have 17-19).
+MAX_ID_DIGITS = 30
+
+
 def json_media(content_type: str) -> bool:
     return "json" in content_type.lower()
 
 
 def _starts_as_json(raw: bytes) -> bool:
-    return raw[:4096].lstrip(b"\xef\xbb\xbf \t\r\n")[:1] in {b"{", b"["}
+    return raw[:JSON_START_WINDOW].lstrip(b"\xef\xbb\xbf \t\r\n")[:1] in {b"{", b"["}
 
 
 def _unknown(shown: str, answer: Answer, what: str) -> ExtensionError:
@@ -69,7 +75,7 @@ def identifier_of(data: Any) -> str | None:
     if isinstance(value, bool):
         return None
     text = str(value).strip() if isinstance(value, (str, int)) else ""
-    return text if text.isdigit() and len(text) <= 30 else None
+    return text if text.isdigit() and len(text) <= MAX_ID_DIGITS else None
 
 
 def write_outcome(context: Context, write_class: str, answer: Answer, shown: str) -> Any:

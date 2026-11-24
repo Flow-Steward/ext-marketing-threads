@@ -36,6 +36,11 @@ _STOP_RESERVE = "x" * MAX_STOP_WARNING
 MAX_ITEMS = 100_000
 DEFAULT_MAX_ITEMS = 10_000
 MAX_CURSOR = 2048
+#: Time a page needs after its request is answered (reading and measuring it; our
+#: decision): no page is started with less than this on top of the request's own window.
+PAGE_READ_SECONDS = 15
+#: The widest count the envelope reserves room for (more than any list here holds).
+WIDEST_COUNT = 10**9
 
 
 @dataclass
@@ -110,7 +115,7 @@ class Pages:
 
 
 def _room(context: Context) -> bool:
-    return context.transport.remaining() >= MIN_CALL_WINDOW_SECONDS + 15
+    return context.transport.remaining() >= MIN_CALL_WINDOW_SECONDS + PAGE_READ_SECONDS
 
 
 def _out_of_time(context: Context) -> ExtensionError:
@@ -158,10 +163,13 @@ def collect(
     shown = entry["shown"]
     page_size = entry["page_size"][1] if entry["page_size"] else None
     envelope = {
-        "count": 10**9,
+        "count": WIDEST_COUNT,
         "complete": False,
         "next_after": "x" * MAX_CURSOR,
-        "rate_limit_usage": {"X-App-Usage": "x" * 2000, "X-Business-Use-Case-Usage": "x" * 2000},
+        "rate_limit_usage": {
+            "X-App-Usage": "x" * errors.HEADER_TEXT,
+            "X-Business-Use-Case-Usage": "x" * errors.HEADER_TEXT,
+        },
     }
     pages = Pages(out_key, envelope)
     cursor = start

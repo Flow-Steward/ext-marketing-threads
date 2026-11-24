@@ -282,3 +282,69 @@ def test_no_result_carries_the_token() -> None:
 
     fake = FakeThreads(ok({"id": "1", "username": TOKEN}))
     assert TOKEN not in text_of(run("test_connection", {}, fake))
+
+
+CAROUSEL_ITEMS = [
+    {"image_url": "https://cdn.example.com/1.jpg"},
+    {"image_url": "https://cdn.example.com/2.jpg"},
+    {"image_url": "https://cdn.example.com/3.jpg"},
+]
+
+
+def _carousel_failure(response: dict[str, Any]) -> dict[str, Any]:
+    assert response["ok"] is False, response
+    assert response["external_effect_status"] == "timeout_unknown"
+    assert response["definitely_no_external_effect"] is False
+    assert "nothing changed" not in response["error"].lower()
+    assert "nothing was changed" not in response["error"].lower()
+    assert "expire after 24 hours" in response["error"]
+    return response["result"]
+
+
+def test_a_carousel_item_refused_after_one_was_created_says_what_exists() -> None:
+    fake = FakeThreads(ok({"id": "111"}), refuse(400, graph_error(100, "Bad image")))
+    response = run(
+        "publish_post", {"media_type": "CAROUSEL", "text": "C", "items": CAROUSEL_ITEMS}, fake
+    )
+    result = _carousel_failure(response)
+    assert result["created_container_ids"] == ["111"]
+    assert result["stage"] == {
+        "items_created": 1,
+        "items_total": 3,
+        "carousel_container_created": False,
+        "published": False,
+    }
+    assert "created 1 of 3 carousel item containers (111)" in response["error"]
+    assert len(fake.calls) == 2  # nothing is retried or sent after the refusal
+
+
+def test_a_carousel_container_refused_after_all_items_says_what_exists() -> None:
+    fake = FakeThreads(
+        ok({"id": "1"}), ok({"id": "2"}), ok({"id": "3"}), refuse(400, graph_error(100, "Bad"))
+    )
+    response = run(
+        "publish_post", {"media_type": "CAROUSEL", "text": "C", "items": CAROUSEL_ITEMS}, fake
+    )
+    result = _carousel_failure(response)
+    assert result["created_container_ids"] == ["1", "2", "3"]
+    assert result["stage"]["items_created"] == 3
+    assert result["stage"]["carousel_container_created"] is False
+    assert "creating the carousel container failed" in response["error"]
+
+
+def test_a_first_carousel_item_refused_changed_nothing() -> None:
+    fake = FakeThreads(refuse(400, graph_error(100, "Bad image")))
+    response = run(
+        "publish_post", {"media_type": "CAROUSEL", "text": "C", "items": CAROUSEL_ITEMS}, fake
+    )
+    assert response["ok"] is False
+    assert response["definitely_no_external_effect"] is True
+
+
+def test_the_earliest_insights_moment_is_meta_s_date() -> None:
+    from datetime import UTC, datetime
+
+    from runtime import composites
+
+    assert composites.INSIGHTS_EARLIEST_MOMENT == datetime(2024, 4, 13, 7, 0, tzinfo=UTC)
+    assert composites.INSIGHTS_EARLIEST == 1712991600

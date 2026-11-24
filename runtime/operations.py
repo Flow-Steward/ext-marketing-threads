@@ -90,7 +90,9 @@ def handle_runtime(
                 external_effect_status="timeout_unknown",
                 http_status=exc.http_status,
             )
-        return error_response(exc.code, exc.message, retry_facts=exc.retry_facts())
+        return error_response(
+            exc.code, exc.message, retry_facts=exc.retry_facts(), result=exc.result
+        )
     except Exception as exc:
         where = _where(exc)
         # A safe trace for the operator: the exception's type and place, never its text

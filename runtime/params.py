@@ -22,6 +22,20 @@ from .errors import invalid
 
 _PAIR_KEY_RE = re.compile(r"^[A-Za-z0-9._\-\[\]]{1,100}$")
 MAX_PAIRS = 100
+#: Bounds of this extension's own inputs (safety bounds, not Threads' rules):
+#: an address, a field or metric name, one value of a free name/value object.
+MAX_URL_LENGTH = 2000
+MAX_NAME_LENGTH = 64
+MAX_PAIR_VALUE_LENGTH = 1000
+#: Characters of a refused value shown back in the message, and of refused names listed
+#: (our decision).
+SHOWN_VALUE_LENGTH = 40
+SHOWN_DATE_LENGTH = 20
+LISTED_NAMES = 5
+#: How many IDs a list input takes when the documentation gives no number (our bound),
+#: and how many country codes (ISO 3166-1 has 249 codes).
+DEFAULT_MAX_IDS = 100
+DEFAULT_MAX_COUNTRY_CODES = 250
 
 
 def text(
@@ -68,7 +82,7 @@ def date_time(value: str, what: str) -> str:
                 tzinfo=timezone(timedelta(hours=int(off_h or 0), minutes=int(off_m or 0)))
             ).astimezone(UTC)
     except (ValueError, OverflowError):
-        raise invalid(f"{what} is not a real date and time: {value[:40]}") from None
+        raise invalid(f"{what} is not a real date and time: {value[:SHOWN_VALUE_LENGTH]}") from None
     return value
 
 
@@ -149,7 +163,7 @@ def identifier(node: Mapping[str, Any], value: Any, what: str) -> str:
 
 
 def url(value: Any, what: str) -> str:
-    result = text(value, what, max_length=2000)
+    result = text(value, what, max_length=MAX_URL_LENGTH)
     if not _URL_RE.fullmatch(result):
         raise invalid(f"{what} must be a full http or https address")
     return result
@@ -173,7 +187,9 @@ def moment(node: Mapping[str, Any], value: Any, what: str) -> str:
         try:
             moment_day = date(year, month, day)
         except ValueError:
-            raise invalid(f"{what} is not a real date: {value.strip()[:20]}") from None
+            raise invalid(
+                f"{what} is not a real date: {value.strip()[:SHOWN_DATE_LENGTH]}"
+            ) from None
         stamp = int(datetime(year, month, day, tzinfo=UTC).timestamp())
         shown = moment_day.isoformat()
     else:
@@ -198,7 +214,7 @@ def names(node: Mapping[str, Any], value: Any, what: str) -> str:
         items = [part for part in value.split(",")]
     out: list[str] = []
     for i, item in enumerate(items, 1):
-        name = text(item, f"{what} item {i}", max_length=64)
+        name = text(item, f"{what} item {i}", max_length=MAX_NAME_LENGTH)
         if not _NAME_RE.fullmatch(name):
             raise invalid(f"{what} item {i} is not a field or metric name")
         if name not in out:
@@ -208,13 +224,15 @@ def names(node: Mapping[str, Any], value: Any, what: str) -> str:
     allowed = node.get("allowed")
     if allowed and any(item not in allowed for item in out):
         wrong = [item for item in out if item not in allowed]
-        raise invalid(f"{what} may only name: {', '.join(allowed)} (not {', '.join(wrong[:5])})")
+        raise invalid(
+            f"{what} may only name: {', '.join(allowed)} (not {', '.join(wrong[:LISTED_NAMES])})"
+        )
     return ",".join(out)
 
 
 def id_list(node: Mapping[str, Any], value: Any, what: str) -> str:
     items = value if isinstance(value, list) else str(value).split(",")
-    low, high = int(node.get("min_items") or 1), int(node.get("max_items") or 100)
+    low, high = int(node.get("min_items") or 1), int(node.get("max_items") or DEFAULT_MAX_IDS)
     if not low <= len(items) <= high:
         raise invalid(f"{what} must list {low} to {high} IDs")
     return ",".join(identifier({}, item, f"{what} item {i}") for i, item in enumerate(items, 1))
@@ -222,7 +240,7 @@ def id_list(node: Mapping[str, Any], value: Any, what: str) -> str:
 
 def codes(node: Mapping[str, Any], value: Any, what: str) -> str:
     items = value if isinstance(value, list) else str(value).split(",")
-    if not items or len(items) > int(node.get("max_items") or 250):
+    if not items or len(items) > int(node.get("max_items") or DEFAULT_MAX_COUNTRY_CODES):
         raise invalid(f"{what} must list at least one country code")
     out = []
     for i, item in enumerate(items, 1):
@@ -313,7 +331,9 @@ def check(node: Mapping[str, Any], value: Any, what: str) -> Any:
             if not isinstance(name, str) or not _PAIR_KEY_RE.fullmatch(name):
                 raise invalid(f"{what} has a name that is not usable as a query parameter")
             for one in item if isinstance(item, list) else [item]:
-                pairs.append((name, wire(text(one, f"{what}.{name}", max_length=1000))))
+                pairs.append(
+                    (name, wire(text(one, f"{what}.{name}", max_length=MAX_PAIR_VALUE_LENGTH)))
+                )
         return pairs
     raise invalid(f"{what} has a kind this extension does not know")  # pragma: no cover
 

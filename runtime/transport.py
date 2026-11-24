@@ -50,9 +50,10 @@ from .connection import Connection
 from .errors import ExtensionError
 
 DEFAULT_TIMEOUT_SECONDS = 120.0
-MAX_REQUEST_BODY_BYTES = 1024 * 1024
+#: The largest request body sent: a form of a post (our bound; media go by URL).
+MAX_REQUEST_BODY_BYTES = errors.MIB
 #: The most read from an answer.
-MAX_ANSWER_BYTES = 30 * 1024 * 1024
+MAX_ANSWER_BYTES = 30 * errors.MIB
 MAX_ERROR_BODY_BYTES = 64 * 1024
 CHUNK_BYTES = 64 * 1024
 #: Shortest window still worth starting a request in.
@@ -194,7 +195,7 @@ class ThreadsTransport:
             value = headers.get(name)
             if not isinstance(value, str) or not value.strip():
                 continue
-            text = errors.safe_text(self.scrub(value), 2000)
+            text = errors.safe_text(self.scrub(value), errors.HEADER_TEXT)
             try:
                 parsed = parse_json(text.encode("utf-8"))
             except ValueError:
@@ -213,7 +214,9 @@ class ThreadsTransport:
         if call.form is not None:
             body = urlencode(list(call.form)).encode("utf-8")
             if len(body) > MAX_REQUEST_BODY_BYTES:
-                raise errors.invalid("The request is larger than the 1 MB this extension sends")
+                raise errors.invalid(
+                    f"The request is larger than the {errors.size_text(MAX_REQUEST_BODY_BYTES)} this extension sends"
+                )
             headers["Content-Type"] = "application/x-www-form-urlencoded"
         url = self._connection.base_url + call.path
         if call.query:
@@ -287,7 +290,7 @@ class ThreadsTransport:
                     if confirmed is None:
                         raise
                     confirmed.unread = (
-                        f"is larger than the {call.limit // (1024 * 1024)} MB this extension reads"
+                        f"is larger than the {errors.size_text(call.limit)} this extension reads"
                         if exc.code == errors.RESPONSE_TOO_LARGE
                         else "did not arrive in time"
                     )
@@ -386,18 +389,18 @@ class ThreadsTransport:
                 data = parse_json(raw)
             except ValueError:
                 text = re.sub(r"<[^>]+>", " ", raw.decode("utf-8", "replace"))
-                return errors.safe_text(self.scrub(text), 200)
-            return errors.safe_text(self.scrub(json.dumps(data, default=str)), 200)
+                return errors.safe_text(self.scrub(text), errors.NAME_TEXT)
+            return errors.safe_text(self.scrub(json.dumps(data, default=str)), errors.NAME_TEXT)
         error = self.scrub(dict(error))
         words = error.get("error_user_msg") or error.get("message") or ""
-        text = errors.safe_text(words, 600)
+        text = errors.safe_text(words, errors.MESSAGE_TEXT)
         code = f"code {error.get('code')}"
         sub = error.get("error_subcode")
         if isinstance(sub, int) and not isinstance(sub, bool):
             code += f", subcode {sub}"
         trace = error.get("fbtrace_id")
         if isinstance(trace, str) and trace.strip():
-            code += f", fbtrace_id {errors.safe_text(trace, 64)}"
+            code += f", fbtrace_id {errors.safe_text(trace, errors.ID_TEXT)}"
         return f"{text} ({code})" if text else f"({code})"
 
     def refusal(
@@ -512,7 +515,7 @@ def _kept_headers(headers: Any, scrub: Callable[[Any], Any]) -> dict[str, str]:
     for name in KEPT_HEADERS:
         value = headers.get(name)
         if isinstance(value, str) and value.strip():
-            kept[name] = errors.safe_text(scrub(value), 2000)
+            kept[name] = errors.safe_text(scrub(value), errors.HEADER_TEXT)
     return kept
 
 
@@ -618,7 +621,7 @@ def read_bounded(
                 )
             raise errors.no_effect(
                 errors.RESPONSE_TOO_LARGE,
-                f"Threads' answer is larger than the {limit // (1024 * 1024)} MB this extension "
+                f"Threads' answer is larger than the {errors.size_text(limit)} this extension "
                 "reads; narrow the request",
             )
     return bytes(buffer)

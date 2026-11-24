@@ -66,7 +66,9 @@ def prepare(operation_id: str, operation_input: Mapping[str, Any]) -> Call:
     given = {k: v for k, v in operation_input.items() if k != "connection_ref"}
     unknown = sorted(set(given) - {p["input"] for p in entry["params"]})
     if unknown:
-        raise invalid(f"The step input has unknown fields: {', '.join(unknown[:10])}")
+        raise invalid(
+            f"The step input has unknown fields: {', '.join(unknown[: errors.LISTED_NAMES])}"
+        )
     path = entry["path"]
     query: list[tuple[str, str]] = [(k, v) for k, v in entry["fixed_query"]]
     form: list[tuple[str, str]] = []

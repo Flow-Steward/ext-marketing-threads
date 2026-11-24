@@ -18,6 +18,7 @@ Threads fetches the media itself from a public server (it accepts no file upload
 from __future__ import annotations
 
 import re
+from datetime import UTC, datetime
 from collections.abc import Callable, Mapping
 from typing import Any
 
@@ -33,6 +34,9 @@ ALT_TEXT_MAX = 1000
 TOPIC_TAG_MAX = 50
 CAROUSEL_MIN = 2
 CAROUSEL_MAX = 20
+#: "EXPIRED — The container was not published within 24 hours and has expired."
+#: (Threads troubleshooting, media container status).
+CONTAINER_EXPIRY_HOURS = 24
 LINKS_MAX = 5
 STATUS_INTERVAL_SECONDS = 60.0
 STATUS_CHECKS = 5
@@ -44,6 +48,8 @@ REPLY_CONTROLS = [
     "followers_only",
 ]
 MEDIA_TYPES = ["TEXT", "IMAGE", "VIDEO", "CAROUSEL"]
+#: The longest media type name (CAROUSEL) with room to spare.
+MEDIA_TYPE_LENGTH = 10
 PROFILE_FIELDS = [
     "id",
     "username",
@@ -124,7 +130,14 @@ ACCOUNT_DEFAULT_METRICS = [
 ]
 WITHOUT_SINCE_UNTIL = {"followers_count", "follower_demographics"}
 BREAKDOWNS = ["country", "city", "age", "gender"]
-INSIGHTS_EARLIEST = 1712991600
+#: "The user insights since and until parameters do not work for dates before April 13,
+#: 2024 (Unix timestamp 1712991600)" (Threads insights page): midnight in California
+#: (Pacific Daylight Time, UTC-7), 07:00 UTC.
+INSIGHTS_EARLIEST_MOMENT = datetime(2024, 4, 13, 7, 0, tzinfo=UTC)
+INSIGHTS_EARLIEST = int(INSIGHTS_EARLIEST_MOMENT.timestamp())
+#: Time the publish needs after the last status check: reading and checking its answer
+#: (our decision), on top of the request's own window.
+PUBLISH_READ_SECONDS = 15
 LIMIT_FIELDS = [
     "quota_usage",
     "config",
@@ -145,7 +158,9 @@ def _closed(given: Mapping[str, Any], allowed: set[str]) -> dict[str, Any]:
     rest = {k: v for k, v in given.items() if k != "connection_ref"}
     unknown = sorted(set(rest) - allowed)
     if unknown:
-        raise invalid(f"The step input has unknown fields: {', '.join(unknown[:10])}")
+        raise invalid(
+            f"The step input has unknown fields: {', '.join(unknown[: errors.LISTED_NAMES])}"
+        )
     return rest
 
 
@@ -218,8 +233,10 @@ def test_connection(context: Context) -> dict[str, Any]:
         context,
         {
             "connected": True,
-            "user_id": errors.safe_text(data["id"], 64),
-            "username": errors.safe_text(username, 100) if isinstance(username, str) else None,
+            "user_id": errors.safe_text(data["id"], errors.ID_TEXT),
+            "username": errors.safe_text(username, errors.SHORT_TEXT)
+            if isinstance(username, str)
+            else None,
             "warnings": [],
         },
     )
@@ -348,7 +365,7 @@ def plan_post(given: Mapping[str, Any], *, reply_to: str | None = None) -> dict[
     """The checked containers of a post or reply: ``items`` (carousel children) and
     ``main`` (the container inputs of get_user_posts' sibling create_media_container)."""
     if reply_to is None:
-        media_type = text(given.get("media_type") or "", "media_type", max_length=10)
+        media_type = text(given.get("media_type") or "", "media_type", max_length=MEDIA_TYPE_LENGTH)
         if media_type not in MEDIA_TYPES:
             raise invalid("media_type must be one of: " + ", ".join(MEDIA_TYPES))
     else:
@@ -439,7 +456,9 @@ def _status(context: Context, container_id: str) -> tuple[str, str | None]:
     if not isinstance(status, str) or not status:
         raise _bad("GET /{threads-container-id}", "carries no status")
     message = data.get("error_message")
-    return status, errors.safe_text(message, 100) if isinstance(message, str) else None
+    return status, errors.safe_text(message, errors.SHORT_TEXT) if isinstance(
+        message, str
+    ) else None
 
 
 def _wait(context: Context, container_id: str) -> tuple[str, str | None, int]:
@@ -454,25 +473,72 @@ def _wait(context: Context, container_id: str) -> tuple[str, str | None, int]:
         # Room for the pause, this status check and the publish request after it.
         if (
             context.transport.remaining()
-            < STATUS_INTERVAL_SECONDS + 2 * MIN_CALL_WINDOW_SECONDS + 15
+            < STATUS_INTERVAL_SECONDS + 2 * MIN_CALL_WINDOW_SECONDS + PUBLISH_READ_SECONDS
         ):
             return status, message, checks
         context.transport.sleep(STATUS_INTERVAL_SECONDS)
 
 
+def _carousel_stopped(
+    exc: ExtensionError | DeadlineReached, item_ids: list[str], total: int
+) -> ExtensionError:
+    """A carousel stopped after some of its containers were created: they exist in
+    Threads, nothing is published, and the step does not go on by itself."""
+    created = len(item_ids)
+    what = f"item container {created + 1}" if created < total else "the carousel container"
+    step = (
+        f"creating {what} failed ({exc.code})"
+        if isinstance(exc, ExtensionError)
+        else f"time ran out before {what} was created"
+    )
+    return ExtensionError(
+        errors.TIMEOUT_UNKNOWN,
+        f"Threads created {created} of {total} carousel item containers "
+        f"({', '.join(item_ids)}); then {step}. The carousel container was not created and "
+        "nothing was published. Unpublished containers expire after "
+        f"{CONTAINER_EXPIRY_HOURS} hours (status EXPIRED). Check the containers before "
+        "running the step again",
+        failure_class="provider",
+        retryable=False,
+        definitely_no_external_effect=False,
+        external_effect_status="timeout_unknown",
+        http_status=exc.http_status if isinstance(exc, ExtensionError) else None,
+        result={
+            "created_container_ids": list(item_ids),
+            "stage": {
+                "items_created": created,
+                "items_total": total,
+                "carousel_container_created": False,
+                "published": False,
+            },
+        },
+    )
+
+
 def _publish(context: Context, plan: Mapping[str, Any]) -> dict[str, Any]:
     warnings: list[str] = []
     item_ids: list[str] = []
+    total = len(plan["items"])
     for item in plan["items"]:
         fields = {"media_type": item["media_type"], item["url_field"]: item["url"]}
         if "alt_text" in item:
             fields["alt_text"] = item["alt_text"]
         fields["is_carousel_item"] = True
-        item_ids.append(_write(context, "create_media_container", fields))
+        try:
+            item_ids.append(_write(context, "create_media_container", fields))
+        except (ExtensionError, DeadlineReached) as exc:
+            if not item_ids:
+                raise
+            raise _carousel_stopped(exc, item_ids, total) from None
     main = dict(plan["main"])
     if item_ids:
         main["children"] = item_ids
-    container_id = _write(context, "create_media_container", main)
+    try:
+        container_id = _write(context, "create_media_container", main)
+    except (ExtensionError, DeadlineReached) as exc:
+        if not item_ids:
+            raise
+        raise _carousel_stopped(exc, item_ids, total) from None
     try:
         status, message, checks = _wait(context, container_id)
     except DeadlineReached:

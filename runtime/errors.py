@@ -56,9 +56,28 @@ SAFE_ERROR_CODES: frozenset[str] = frozenset(
 AMBIGUOUS_ERROR_CODES: frozenset[str] = frozenset({TIMEOUT_UNKNOWN})
 
 _MAX_MESSAGE = 1500
+#: Lengths at which a text taken from an input or an answer is cut before it reaches a
+#: result, a warning or an error (our decision: bounded, still readable).
+ID_TEXT = 64  # an ID, Meta's fbtrace_id
+SHORT_TEXT = 100  # a user name, a container's error message
+NAME_TEXT = 200  # a short answer text
+TEXT_LIMIT = 300  # a warning; the default
+MESSAGE_TEXT = 600  # Threads' error message
+HEADER_TEXT = 2000  # a kept response header
+#: How many unknown input names a refusal lists (our decision).
+LISTED_NAMES = 10
+MIB = 1024 * 1024
 
 
-def safe_text(value: object, limit: int = 300) -> str:
+def size_text(count: int) -> str:
+    """A byte count as messages show it (``1 MiB``), from the same constant the check
+    uses, so the number in a message and the limit never differ."""
+    if count % MIB == 0:
+        return f"{count // MIB} MiB"
+    return f"{count} bytes"
+
+
+def safe_text(value: object, limit: int = TEXT_LIMIT) -> str:
     """Printable, single-line, bounded text from an upstream value."""
     text = value if isinstance(value, str) else ("" if value is None else str(value))
     text = "".join(ch if ch.isprintable() else " " for ch in text)
@@ -80,6 +99,7 @@ class ExtensionError(Exception):
         external_effect_status: str | None = None,
         http_status: int | None = None,
         retry_after_seconds: float | None = None,
+        result: Mapping[str, object] | None = None,
     ) -> None:
         safe_code = code if code in SAFE_ERROR_CODES else INTERNAL_ERROR
         bounded = safe_text(message, _MAX_MESSAGE)
@@ -92,6 +112,8 @@ class ExtensionError(Exception):
         self.external_effect_status = external_effect_status
         self.http_status = http_status
         self.retry_after_seconds = retry_after_seconds
+        #: Structured facts of the failure, returned in the error's ``result``.
+        self.result = dict(result or {})
 
     def retry_facts(self) -> dict[str, object]:
         """Closed, non-secret facts understood by Core."""
@@ -132,14 +154,16 @@ def error_response(
     message: str,
     *,
     retry_facts: Mapping[str, object] | None = None,
+    result: Mapping[str, object] | None = None,
 ) -> dict[str, object]:
-    """The failing runtime envelope for one safe error."""
+    """The failing runtime envelope for one safe error; ``result`` adds structured facts
+    to the error's result (next to its warnings)."""
     safe_code = code if code in SAFE_ERROR_CODES else INTERNAL_ERROR
     bounded = safe_text(message, _MAX_MESSAGE)
     entry: dict[str, object] = {"code": safe_code, "message": bounded}
     response: dict[str, object] = {
         "ok": False,
-        "result": {"warnings": []},
+        "result": {**(result or {}), "warnings": []},
         "error_code": safe_code,
         "error": bounded,
         "errors": [entry],
