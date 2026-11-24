@@ -34,12 +34,13 @@ forms:
     label: Since
     widget_type: text
     required: false
-    help_text: 'Only from this moment: a Unix timestamp such as 1767225600 or a date such as 2026-01-01.'
+    help_text: 'Only from this moment: a Unix timestamp such as 1767225600, or a date and time such as
+      2026-01-01T00:00:00Z.'
   - name: until
     label: Until
     widget_type: text
     required: false
-    help_text: 'Only until this moment, after since: a Unix timestamp or a date such as 2026-01-31.'
+    help_text: 'Only until this moment, after since: a Unix timestamp, or a date and time such as 2026-01-31T23:59:59Z.'
   - name: fields
     label: Fields
     widget_type: json
@@ -47,12 +48,13 @@ forms:
     help_text: 'The post fields to read. Default: every documented field of a post.'
     placeholder: '[]'
   - name: after
-    label: Continue after
+    label: After cursor
     widget_type: text
     required: false
-    help_text: 'next_after of an earlier run, to continue where it stopped. Empty: from the start.'
+    help_text: 'A cursor to continue from: next_after of an earlier run, or an after cursor Threads returned.
+      Empty: from the start. Not together with before.'
   - name: max_posts
-    label: At most
+    label: Most posts
     widget_type: integer
     required: false
     help_text: The most to read in this step. Default 10000.
@@ -60,7 +62,7 @@ forms:
   title: Publish a post
   fields:
   - name: media_type
-    label: Kind of post
+    label: Media type
     widget_type: select
     required: true
     help_text: TEXT, IMAGE, VIDEO or CAROUSEL (2 to 20 images and videos).
@@ -80,13 +82,13 @@ forms:
     help_text: The text of the post, up to 500 characters (Threads counts an emoji as its UTF-8 bytes).
       Required for a text post.
   - name: image_url
-    label: Image address
+    label: Image URL
     widget_type: text
     required: false
     help_text: A public address of a JPEG or PNG image (up to 8 MB). Threads takes media only from a public
       URL, which it downloads itself; a workflow file must first be published at a public URL.
   - name: video_url
-    label: Video address
+    label: Video URL
     widget_type: text
     required: false
     help_text: A public address of an MP4 or MOV video (up to 1 GB, 5 minutes). Threads takes media only
@@ -106,7 +108,7 @@ forms:
       which it downloads itself; a workflow file must first be published at a public URL.'
     placeholder: '[]'
   - name: link_attachment
-    label: Link preview
+    label: Link attachment
     widget_type: text
     required: false
     help_text: A public address shown as a link preview; text posts only. A post may hold at most 5 links.
@@ -150,7 +152,7 @@ forms:
   title: Reply to a post
   fields:
   - name: reply_to_id
-    label: Reply to
+    label: Reply to ID
     widget_type: text
     required: true
     help_text: The ID of the post or reply to answer.
@@ -161,13 +163,13 @@ forms:
     help_text: The text of the post, up to 500 characters (Threads counts an emoji as its UTF-8 bytes).
       Required for a text post.
   - name: image_url
-    label: Image address
+    label: Image URL
     widget_type: text
     required: false
     help_text: A public address of a JPEG or PNG image (up to 8 MB). Threads takes media only from a public
       URL, which it downloads itself; a workflow file must first be published at a public URL.
   - name: video_url
-    label: Video address
+    label: Video URL
     widget_type: text
     required: false
     help_text: A public address of an MP4 or MOV video (up to 1 GB, 5 minutes). Threads takes media only
@@ -203,7 +205,7 @@ forms:
     required: true
     help_text: The post whose replies to read.
   - name: include_nested
-    label: Nested replies too
+    label: Include nested
     widget_type: boolean
     required: false
     help_text: True for replies at every level (the conversation), false or empty for top-level replies.
@@ -219,12 +221,13 @@ forms:
     help_text: 'The reply fields to read. Default: every documented field of a reply.'
     placeholder: '[]'
   - name: after
-    label: Continue after
+    label: After cursor
     widget_type: text
     required: false
-    help_text: 'next_after of an earlier run, to continue where it stopped. Empty: from the start.'
+    help_text: 'A cursor to continue from: next_after of an earlier run, or an after cursor Threads returned.
+      Empty: from the start. Not together with before.'
   - name: max_replies
-    label: At most
+    label: Most replies
     widget_type: integer
     required: false
     help_text: The most to read in this step. Default 10000.
@@ -283,14 +286,15 @@ forms:
     label: Since
     widget_type: text
     required: false
-    help_text: 'Only from this moment: a Unix timestamp such as 1767225600 or a date such as 2026-01-01.'
+    help_text: 'Only from this moment: a Unix timestamp such as 1767225600, or a date and time such as
+      2026-01-01T00:00:00Z.'
   - name: until
     label: Until
     widget_type: text
     required: false
-    help_text: 'Only until this moment, after since: a Unix timestamp or a date such as 2026-01-31.'
+    help_text: 'Only until this moment, after since: a Unix timestamp, or a date and time such as 2026-01-31T23:59:59Z.'
   - name: breakdown
-    label: Demographics by
+    label: Breakdown
     widget_type: select
     required: false
     help_text: Required with follower_demographics (accounts with at least 100 followers).
@@ -315,7 +319,7 @@ forms:
     required: false
     help_text: The Threads user ID, or me for the connected account (the default).
   - name: media_type
-    label: media_type
+    label: Media type
     widget_type: select
     required: true
     help_text: 'The type of media container to create. Values: `TEXT`, `IMAGE`, `VIDEO`, `CAROUSEL`'
@@ -329,25 +333,25 @@ forms:
     - label: CAROUSEL
       value: CAROUSEL
   - name: text
-    label: text
+    label: Text
     widget_type: text
     required: false
     help_text: 'The text associated with the post. Uses UTF-8 encoding. Required for text-only posts.
       Note: For the post character limit, emojis are counted as the number of UTF-8 bytes.'
   - name: image_url
-    label: image_url
+    label: Image URL
     widget_type: text
     required: false
     help_text: The public URL of the image. Required if `media_type=IMAGE`. Threads takes media only from
       a public URL, which it downloads itself; a workflow file must first be published at a public URL.
   - name: video_url
-    label: video_url
+    label: Video URL
     widget_type: text
     required: false
     help_text: The public URL of the video. Required if `media_type=VIDEO`. Threads takes media only from
       a public URL, which it downloads itself; a workflow file must first be published at a public URL.
   - name: is_made_with_ai
-    label: is_made_with_ai
+    label: Made with AI
     widget_type: boolean
     required: false
     help_text: 'Set to `true` to disclose that a post contains AI-generated content and display the AI
@@ -355,24 +359,24 @@ forms:
       (default) Set this parameter when creating the media container, not when calling `POST /{threads-user-id}/threads_publish`.
       For carousels, set it on the parent container. Setting `is_made_with_ai=true` on an individ'
   - name: is_carousel_item
-    label: is_carousel_item
+    label: Is carousel item
     widget_type: boolean
     required: false
     help_text: 'Set to `true` if this container is an item in a carousel. Values: `true`, `false` (default)'
   - name: children
-    label: children
+    label: Carousel item IDs
     widget_type: json
     required: false
     help_text: A comma-separated list of the media container IDs of the carousel items. Required if `media_type=CAROUSEL`.
       Give a list; it is sent comma-separated.
     placeholder: '[]'
   - name: reply_to_id
-    label: reply_to_id
+    label: Reply to ID
     widget_type: text
     required: false
     help_text: The ID of the post to reply to. Required if replying to a post.
   - name: reply_control
-    label: reply_control
+    label: Who can reply
     widget_type: select
     required: false
     help_text: 'Specifies who can reply to the post. Values: `everyone`, `accounts_you_follow`, `mentioned_only`,
@@ -389,7 +393,7 @@ forms:
     - label: followers_only
       value: followers_only
   - name: allowlisted_country_codes
-    label: allowlisted_country_codes
+    label: Allowlisted country codes
     widget_type: json
     required: false
     help_text: A list of valid ISO 3166-1 alpha-2 country codes that represents the countries where this
@@ -397,88 +401,88 @@ forms:
       in countries outside of this list. Give a list; it is sent comma-separated.
     placeholder: '[]'
   - name: alt_text
-    label: alt_text
+    label: Alternative text
     widget_type: text
     required: false
     help_text: 'The accessibility text label or description for an image or video in a Threads post. Note:
       The maximum length of `alt_text` is 1,000 characters.'
   - name: link_attachment
-    label: link_attachment
+    label: Link attachment
     widget_type: text
     required: false
     help_text: The URL attached to a Threads post.
   - name: quote_post_id
-    label: quote_post_id
+    label: Quote post ID
     widget_type: text
     required: false
     help_text: ID of the post to quote.
   - name: poll_attachment
-    label: poll_attachment
+    label: Poll attachment
     widget_type: json
     required: false
     help_text: The options for a post with a poll attachment. Give a JSON object; it is sent as JSON text.
     placeholder: '{}'
   - name: auto_publish_text
-    label: auto_publish_text
+    label: Auto publish text
     widget_type: boolean
     required: false
     help_text: 'When set to `true`, a Threads post is published automatically when a Threads media container
       is created without needing to go through the extra publish step. Note: This only works for text
       posts.'
   - name: topic_tag
-    label: topic_tag
+    label: Topic
     widget_type: text
     required: false
     help_text: 'The topic to add to a post. Note: The following characters are not allowed in topic tags:
       Periods (.) Ampersands (&)'
   - name: is_spoiler_media
-    label: is_spoiler_media
+    label: Is spoiler media
     widget_type: boolean
     required: false
     help_text: 'Whether the media should be a spoiler. Values: `true`, `false`'
   - name: text_entities
-    label: text_entities
+    label: Text entities
     widget_type: json
     required: false
     help_text: The spoiler settings for the post. Give a JSON object; it is sent as JSON text.
     placeholder: '{}'
   - name: text_attachment
-    label: text_attachment
+    label: Text attachment
     widget_type: json
     required: false
     help_text: The text attachment for the post. Give a JSON object; it is sent as JSON text.
     placeholder: '{}'
   - name: gif_attachment
-    label: gif_attachment
+    label: Gif attachment
     widget_type: json
     required: false
     help_text: 'The ID and GIF provider for the GIF to attach to the post. Fields: `gif_id`, `provider`
       Give a JSON object; it is sent as JSON text.'
     placeholder: '{}'
   - name: is_ghost_post
-    label: is_ghost_post
+    label: Is ghost post
     widget_type: boolean
     required: false
     help_text: 'Whether the post is a ghost post. Values: `true`, `false`'
   - name: enable_reply_approvals
-    label: enable_reply_approvals
+    label: Enable reply approvals
     widget_type: boolean
     required: false
     help_text: 'Whether the post should have reply approvals enabled. Values: `true`, `false`'
   - name: crossreshare_to_ig
-    label: crossreshare_to_ig
+    label: Crossreshare to Instagram
     widget_type: boolean
     required: false
     help_text: 'Cross-shares a Threads post to a linked Instagram account as a Story when set to `true`.
       Values: `true`, `false` (default)'
   - name: crossreshare_to_ig_dark_mode
-    label: crossreshare_to_ig_dark_mode
+    label: Crossreshare to Instagram dark mode
     widget_type: boolean
     required: false
     help_text: 'Cross-shares a Threads post to a linked Instagram account as a Story in dark mode when
       set to `true`. Values: `true`, `false` (default)'
   - name: location_id
-    label: location_id
+    label: Location ID
     widget_type: text
     required: false
     help_text: 'The ID of the location to tag. Note: Use the `GET /location_search` endpoint to find location
@@ -500,7 +504,7 @@ forms:
     required: true
     help_text: The path parameter of the Threads media container identifier.
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `id` (default), `status`
@@ -521,7 +525,7 @@ forms:
     required: false
     help_text: The Threads user ID, or me for the connected account (the default).
   - name: creation_id
-    label: creation_id
+    label: Media container ID
     widget_type: text
     required: true
     help_text: Identifier of the Threads media container.
@@ -537,21 +541,21 @@ forms:
   title: Get embed HTML
   fields:
   - name: url
-    label: url
+    label: Post URL
     widget_type: text
     required: true
     help_text: 'Permanent link to the post or profile on Threads. Accepted formats: `https://www.threads.com/@{username}/post/{media-shortcode}`
       `https://www.threads.com/t/{media-shortcode}` `https://www.threads.com/@{username}` Examples: https://www.threads.com/@meta/post/DDzbnVKx57R
       https://www.threads.com/t/DDzbnVKx57R https://www.threads.com/@meta'
   - name: maxwidth
-    label: maxwidth
+    label: Max width
     widget_type: integer
     required: false
     help_text: 'Maximum width of returned media. Must be between 320 and 658 pixels. Note: The `maxheight`
       parameter is not supported because the embed code is responsive and its height varies depending
       on its width.'
   - name: theme
-    label: theme
+    label: Theme
     widget_type: select
     required: false
     help_text: 'Display mode for the embed. Accepted values: `light`: Always use light mode. This is the
@@ -573,7 +577,7 @@ forms:
     required: true
     help_text: The path parameter of the Threads media identifier.
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`,
@@ -647,12 +651,12 @@ forms:
   title: Search posts by keyword or topic
   fields:
   - name: q
-    label: q
+    label: Search query
     widget_type: text
     required: true
     help_text: The keyword or keywords to search for.
   - name: search_type
-    label: search_type
+    label: Search type
     widget_type: select
     required: false
     help_text: 'Specifies the search behavior. Values: `TOP` (default) — Returns the most popular search
@@ -663,7 +667,7 @@ forms:
     - label: RECENT
       value: RECENT
   - name: search_mode
-    label: search_mode
+    label: Search mode
     widget_type: select
     required: false
     help_text: 'Specifies the search mode. Values: `KEYWORD` (default) — The query is treated as a keyword.
@@ -674,7 +678,7 @@ forms:
     - label: TAG
       value: TAG
   - name: media_type
-    label: media_type
+    label: Media type
     widget_type: select
     required: false
     help_text: 'Specifies the type of media to search for. Only the media type values listed below are
@@ -688,7 +692,7 @@ forms:
     - label: VIDEO
       value: VIDEO
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`,
@@ -745,27 +749,23 @@ forms:
     - label: topic_tag
       value: topic_tag
   - name: since
-    label: since
+    label: Since
     widget_type: text
     required: false
-    help_text: The start date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such
-      as `2026-01-01`). Must be on or after `1688540400` and before `until`. A Unix timestamp or a date
-      such as 2026-01-01.
+    help_text: 'Only from this moment: a Unix timestamp such as 1767225600, or a date and time such as
+      2026-01-01T00:00:00Z.'
   - name: until
-    label: until
+    label: Until
     widget_type: text
     required: false
-    help_text: The end date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such
-      as `2026-01-01`). Must be after `since` and no later than the current time. A Unix timestamp or
-      a date such as 2026-01-01.
+    help_text: 'Only until this moment, after since: a Unix timestamp, or a date and time such as 2026-01-31T23:59:59Z.'
   - name: limit
-    label: limit
+    label: Page size
     widget_type: integer
     required: false
-    help_text: The maximum number of media objects or records to return. The default is `25` and the maximum
-      is `100`. Only non-negative numbers are allowed.
+    help_text: The most records Threads returns in one page (Threads' default 25, at most 100).
   - name: author_username
-    label: author_username
+    label: Author username
     widget_type: text
     required: false
     help_text: Filters search results to include only posts created by the specified username. The username
@@ -779,7 +779,7 @@ forms:
     required: true
     help_text: The path parameter of the media identifier of the Threads reply.
   - name: approve
-    label: approve
+    label: Approve
     widget_type: boolean
     required: true
     help_text: 'Set to `true` to approve a reply, and set to `false` to ignore a reply. Values: `true`,
@@ -788,27 +788,28 @@ forms:
   title: Get pending replies
   fields:
   - name: reverse
-    label: reverse
+    label: Newest first
     widget_type: boolean
     required: false
     help_text: 'Whether to sort replies in reverse chronological order. Values: `true` (default), `false`'
   - name: before
-    label: before
+    label: Before cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: A cursor Threads returned, to read the page before it. Not together with after.
   - name: after
-    label: after
+    label: After cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: 'A cursor to continue from: next_after of an earlier run, or an after cursor Threads returned.
+      Empty: from the start. Not together with before.'
   - name: threads_media_id
     label: Post ID
     widget_type: text
     required: true
     help_text: The path parameter of the Threads media identifier.
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`,
@@ -869,7 +870,7 @@ forms:
     - label: reply_approval_status
       value: reply_approval_status
   - name: approval_status
-    label: approval_status
+    label: Approval status
     widget_type: select
     required: false
     help_text: 'Values: (case-sensitive) `pending` — Show only pending replies. `ignored` — Show only
@@ -885,7 +886,7 @@ forms:
     required: false
     help_text: True to read every page from after (or the start) until the list ends.
   - name: max_items
-    label: At most
+    label: Most records
     widget_type: integer
     required: false
     help_text: 'With all_pages: the most records to read. Default 10000.'
@@ -893,27 +894,28 @@ forms:
   title: Get the conversation of a post
   fields:
   - name: reverse
-    label: reverse
+    label: Newest first
     widget_type: boolean
     required: false
     help_text: 'Whether to sort replies in reverse chronological order. Values: `true` (default), `false`'
   - name: before
-    label: before
+    label: Before cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: A cursor Threads returned, to read the page before it. Not together with after.
   - name: after
-    label: after
+    label: After cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: 'A cursor to continue from: next_after of an earlier run, or an after cursor Threads returned.
+      Empty: from the start. Not together with before.'
   - name: threads_media_id
     label: Post ID
     widget_type: text
     required: true
     help_text: The path parameter of the Threads media identifier.
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`,
@@ -977,7 +979,7 @@ forms:
     required: false
     help_text: True to read every page from after (or the start) until the list ends.
   - name: max_items
-    label: At most
+    label: Most records
     widget_type: integer
     required: false
     help_text: 'With all_pages: the most records to read. Default 10000.'
@@ -985,27 +987,28 @@ forms:
   title: Get replies to a post
   fields:
   - name: reverse
-    label: reverse
+    label: Newest first
     widget_type: boolean
     required: false
     help_text: 'Whether to sort replies in reverse chronological order. Values: `true` (default), `false`'
   - name: before
-    label: before
+    label: Before cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: A cursor Threads returned, to read the page before it. Not together with after.
   - name: after
-    label: after
+    label: After cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: 'A cursor to continue from: next_after of an earlier run, or an after cursor Threads returned.
+      Empty: from the start. Not together with before.'
   - name: threads_media_id
     label: Post ID
     widget_type: text
     required: true
     help_text: The path parameter of the Threads media identifier.
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`,
@@ -1069,7 +1072,7 @@ forms:
     required: false
     help_text: True to read every page from after (or the start) until the list ends.
   - name: max_items
-    label: At most
+    label: Most records
     widget_type: integer
     required: false
     help_text: 'With all_pages: the most records to read. Default 10000.'
@@ -1082,7 +1085,7 @@ forms:
     required: true
     help_text: The path parameter of the media identifier of the Threads reply.
   - name: hide
-    label: hide
+    label: Hide
     widget_type: boolean
     required: true
     help_text: 'Set to `true` to hide a reply and set to `false` to unhide a reply. Values: `true`, `false`'
@@ -1090,42 +1093,39 @@ forms:
   title: Get a public profile's posts
   fields:
   - name: since
-    label: since
+    label: Since
     widget_type: text
     required: false
-    help_text: The start date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such
-      as `2026-01-01`). Must be on or after `1688540400` and before `until`. A Unix timestamp or a date
-      such as 2026-01-01.
+    help_text: 'Only from this moment: a Unix timestamp such as 1767225600, or a date and time such as
+      2026-01-01T00:00:00Z.'
   - name: until
-    label: until
+    label: Until
     widget_type: text
     required: false
-    help_text: The end date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such
-      as `2026-01-01`). Must be after `since` and no later than the current time. A Unix timestamp or
-      a date such as 2026-01-01.
+    help_text: 'Only until this moment, after since: a Unix timestamp, or a date and time such as 2026-01-31T23:59:59Z.'
   - name: limit
-    label: limit
+    label: Page size
     widget_type: integer
     required: false
-    help_text: The maximum number of media objects or records to return. The default is `25` and the maximum
-      is `100`. Only non-negative numbers are allowed.
+    help_text: The most records Threads returns in one page (Threads' default 25, at most 100).
   - name: before
-    label: before
+    label: Before cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: A cursor Threads returned, to read the page before it. Not together with after.
   - name: after
-    label: after
+    label: After cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: 'A cursor to continue from: next_after of an earlier run, or an after cursor Threads returned.
+      Empty: from the start. Not together with before.'
   - name: username
-    label: username
+    label: Username
     widget_type: text
     required: true
     help_text: Handle or unique username on Threads. Must be an exact match.
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`,
@@ -1182,7 +1182,7 @@ forms:
     required: false
     help_text: True to read every page from after (or the start) until the list ends.
   - name: max_items
-    label: At most
+    label: Most records
     widget_type: integer
     required: false
     help_text: 'With all_pages: the most records to read. Default 10000.'
@@ -1195,7 +1195,7 @@ forms:
     required: false
     help_text: The Threads user ID, or me for the connected account (the default).
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `quota_usage` (default),
@@ -1222,42 +1222,39 @@ forms:
   title: Get user ghost posts
   fields:
   - name: since
-    label: since
+    label: Since
     widget_type: text
     required: false
-    help_text: The start date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such
-      as `2026-01-01`). Must be on or after `1688540400` and before `until`. A Unix timestamp or a date
-      such as 2026-01-01.
+    help_text: 'Only from this moment: a Unix timestamp such as 1767225600, or a date and time such as
+      2026-01-01T00:00:00Z.'
   - name: until
-    label: until
+    label: Until
     widget_type: text
     required: false
-    help_text: The end date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such
-      as `2026-01-01`). Must be after `since` and no later than the current time. A Unix timestamp or
-      a date such as 2026-01-01.
+    help_text: 'Only until this moment, after since: a Unix timestamp, or a date and time such as 2026-01-31T23:59:59Z.'
   - name: limit
-    label: limit
+    label: Page size
     widget_type: integer
     required: false
-    help_text: The maximum number of media objects or records to return. The default is `25` and the maximum
-      is `100`. Only non-negative numbers are allowed.
+    help_text: The most records Threads returns in one page (Threads' default 25, at most 100).
   - name: before
-    label: before
+    label: Before cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: A cursor Threads returned, to read the page before it. Not together with after.
   - name: after
-    label: after
+    label: After cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: 'A cursor to continue from: next_after of an earlier run, or an after cursor Threads returned.
+      Empty: from the start. Not together with before.'
   - name: threads_user_id
     label: Threads user ID
     widget_type: text
     required: false
     help_text: The Threads user ID, or me for the connected account (the default).
   - name: fields
-    label: fields
+    label: Fields
     widget_type: json
     required: false
     help_text: A comma-separated list of the fields to be returned. If omitted, the default fields are
@@ -1269,7 +1266,7 @@ forms:
     required: false
     help_text: True to read every page from after (or the start) until the list ends.
   - name: max_items
-    label: At most
+    label: Most records
     widget_type: integer
     required: false
     help_text: 'With all_pages: the most records to read. Default 10000.'
@@ -1277,42 +1274,39 @@ forms:
   title: Get user mentions
   fields:
   - name: since
-    label: since
+    label: Since
     widget_type: text
     required: false
-    help_text: The start date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such
-      as `2026-01-01`). Must be on or after `1688540400` and before `until`. A Unix timestamp or a date
-      such as 2026-01-01.
+    help_text: 'Only from this moment: a Unix timestamp such as 1767225600, or a date and time such as
+      2026-01-01T00:00:00Z.'
   - name: until
-    label: until
+    label: Until
     widget_type: text
     required: false
-    help_text: The end date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such
-      as `2026-01-01`). Must be after `since` and no later than the current time. A Unix timestamp or
-      a date such as 2026-01-01.
+    help_text: 'Only until this moment, after since: a Unix timestamp, or a date and time such as 2026-01-31T23:59:59Z.'
   - name: limit
-    label: limit
+    label: Page size
     widget_type: integer
     required: false
-    help_text: The maximum number of media objects or records to return. The default is `25` and the maximum
-      is `100`. Only non-negative numbers are allowed.
+    help_text: The most records Threads returns in one page (Threads' default 25, at most 100).
   - name: before
-    label: before
+    label: Before cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: A cursor Threads returned, to read the page before it. Not together with after.
   - name: after
-    label: after
+    label: After cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: 'A cursor to continue from: next_after of an earlier run, or an after cursor Threads returned.
+      Empty: from the start. Not together with before.'
   - name: threads_user_id
     label: Threads user ID
     widget_type: text
     required: false
     help_text: The Threads user ID, or me for the connected account (the default).
   - name: fields
-    label: fields
+    label: Fields
     widget_type: json
     required: false
     help_text: A comma-separated list of the fields to be returned. If omitted, the default fields are
@@ -1324,7 +1318,7 @@ forms:
     required: false
     help_text: True to read every page from after (or the start) until the list ends.
   - name: max_items
-    label: At most
+    label: Most records
     widget_type: integer
     required: false
     help_text: 'With all_pages: the most records to read. Default 10000.'
@@ -1332,42 +1326,39 @@ forms:
   title: Get user posts
   fields:
   - name: since
-    label: since
+    label: Since
     widget_type: text
     required: false
-    help_text: The start date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such
-      as `2026-01-01`). Must be on or after `1688540400` and before `until`. A Unix timestamp or a date
-      such as 2026-01-01.
+    help_text: 'Only from this moment: a Unix timestamp such as 1767225600, or a date and time such as
+      2026-01-01T00:00:00Z.'
   - name: until
-    label: until
+    label: Until
     widget_type: text
     required: false
-    help_text: The end date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such
-      as `2026-01-01`). Must be after `since` and no later than the current time. A Unix timestamp or
-      a date such as 2026-01-01.
+    help_text: 'Only until this moment, after since: a Unix timestamp, or a date and time such as 2026-01-31T23:59:59Z.'
   - name: limit
-    label: limit
+    label: Page size
     widget_type: integer
     required: false
-    help_text: The maximum number of media objects or records to return. The default is `25` and the maximum
-      is `100`. Only non-negative numbers are allowed.
+    help_text: The most records Threads returns in one page (Threads' default 25, at most 100).
   - name: before
-    label: before
+    label: Before cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: A cursor Threads returned, to read the page before it. Not together with after.
   - name: after
-    label: after
+    label: After cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: 'A cursor to continue from: next_after of an earlier run, or an after cursor Threads returned.
+      Empty: from the start. Not together with before.'
   - name: threads_user_id
     label: Threads user ID
     widget_type: text
     required: false
     help_text: The Threads user ID, or me for the connected account (the default).
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`,
@@ -1431,7 +1422,7 @@ forms:
     required: false
     help_text: True to read every page from after (or the start) until the list ends.
   - name: max_items
-    label: At most
+    label: Most records
     widget_type: integer
     required: false
     help_text: 'With all_pages: the most records to read. Default 10000.'
@@ -1444,7 +1435,7 @@ forms:
     required: false
     help_text: The Threads user ID, or me for the connected account (the default).
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `id` (default), `username`,
@@ -1469,42 +1460,39 @@ forms:
   title: Get user replies
   fields:
   - name: since
-    label: since
+    label: Since
     widget_type: text
     required: false
-    help_text: The start date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such
-      as `2026-01-01`). Must be on or after `1688540400` and before `until`. A Unix timestamp or a date
-      such as 2026-01-01.
+    help_text: 'Only from this moment: a Unix timestamp such as 1767225600, or a date and time such as
+      2026-01-01T00:00:00Z.'
   - name: until
-    label: until
+    label: Until
     widget_type: text
     required: false
-    help_text: The end date for retrieval, as a Unix timestamp (such as `1767225600`) or a date (such
-      as `2026-01-01`). Must be after `since` and no later than the current time. A Unix timestamp or
-      a date such as 2026-01-01.
+    help_text: 'Only until this moment, after since: a Unix timestamp, or a date and time such as 2026-01-31T23:59:59Z.'
   - name: limit
-    label: limit
+    label: Page size
     widget_type: integer
     required: false
-    help_text: The maximum number of media objects or records to return. The default is `25` and the maximum
-      is `100`. Only non-negative numbers are allowed.
+    help_text: The most records Threads returns in one page (Threads' default 25, at most 100).
   - name: before
-    label: before
+    label: Before cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: A cursor Threads returned, to read the page before it. Not together with after.
   - name: after
-    label: after
+    label: After cursor
     widget_type: text
     required: false
-    help_text: A cursor for pagination. You cannot pass both `before` and `after` in the same request.
+    help_text: 'A cursor to continue from: next_after of an earlier run, or an after cursor Threads returned.
+      Empty: from the start. Not together with before.'
   - name: threads_user_id
     label: Threads user ID
     widget_type: text
     required: false
     help_text: The Threads user ID, or me for the connected account (the default).
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `id` (default), `media_product_type`,
@@ -1564,7 +1552,7 @@ forms:
     required: false
     help_text: True to read every page from after (or the start) until the list ends.
   - name: max_items
-    label: At most
+    label: Most records
     widget_type: integer
     required: false
     help_text: 'With all_pages: the most records to read. Default 10000.'
@@ -1572,7 +1560,7 @@ forms:
   title: Look up a public profile
   fields:
   - name: username
-    label: username
+    label: Username
     widget_type: text
     required: true
     help_text: Handle or unique username on Threads. Must be an exact match.
@@ -1585,7 +1573,7 @@ forms:
     required: true
     help_text: The path parameter of the Threads location identifier.
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `id` (default), `name`, `address`,
@@ -1611,22 +1599,22 @@ forms:
   title: Search locations
   fields:
   - name: query
-    label: query
+    label: Search query
     widget_type: text
     required: false
     help_text: The query string to search for.
   - name: latitude
-    label: latitude
+    label: Latitude
     widget_type: text
     required: false
     help_text: The latitude coordinate to search for. This must be used with `longitude`.
   - name: longitude
-    label: longitude
+    label: Longitude
     widget_type: text
     required: false
     help_text: The longitude coordinate to search for. This must be used with `latitude`.
   - name: fields
-    label: fields
+    label: Fields
     widget_type: multi_select
     required: false
     help_text: 'A comma-separated list of the fields to be returned. Values: `id` (default), `name`, `address`,
@@ -1657,7 +1645,7 @@ forms:
     required: true
     help_text: The path parameter of the Threads media identifier.
   - name: metric
-    label: metric
+    label: Metric
     widget_type: multi_select
     required: true
     help_text: 'A comma-separated list of the metrics to be returned. Must be at least one of the metric
@@ -1685,21 +1673,18 @@ forms:
     required: false
     help_text: The Threads user ID, or me for the connected account (the default).
   - name: since
-    label: since
+    label: Since
     widget_type: text
     required: false
-    help_text: 'Used in conjunction with the `until` parameter to define a range. If you omit `since`
-      and `until`, it defaults to a 2-day range: yesterday through today. Format: A Unix timestamp (such
-      as `1767225600`) or a date (such as `2026-01-01`) A Unix timestamp or a date such as 2026-01-01.'
+    help_text: 'Only from this moment: a Unix timestamp such as 1767225600, or a date and time such as
+      2026-01-01T00:00:00Z.'
   - name: until
-    label: until
+    label: Until
     widget_type: text
     required: false
-    help_text: 'Used in conjunction with the `since` parameter to define a range. If you omit `since`
-      and `until`, it defaults to a 2-day range: yesterday through today. Format: A Unix timestamp (such
-      as `1767225600`) or a date (such as `2026-01-01`) A Unix timestamp or a date such as 2026-01-01.'
+    help_text: 'Only until this moment, after since: a Unix timestamp, or a date and time such as 2026-01-31T23:59:59Z.'
   - name: metric
-    label: metric
+    label: Metric
     widget_type: multi_select
     required: true
     help_text: 'A comma-separated list of the metrics to be returned. Must be at least one of the metric
@@ -1724,7 +1709,7 @@ forms:
     - label: follower_demographics
       value: follower_demographics
   - name: breakdown
-    label: breakdown
+    label: Breakdown
     widget_type: select
     required: false
     help_text: 'With follower_demographics: one of country, city, age, gender (insights guide).'

@@ -3,6 +3,12 @@ pages:
 - ref: pages/setup-guide.yaml
 - ref: pages/connection.yaml
 - ref: pages/threads-api.yaml
-- ref: pages/coverage.yaml
+- ref: pages/threads-api-publishing.yaml
+- ref: pages/threads-api-posts.yaml
+- ref: pages/threads-api-replies.yaml
+- ref: pages/threads-api-profiles.yaml
+- ref: pages/threads-api-insights.yaml
+- ref: pages/threads-api-locations.yaml
+- ref: pages/api-coverage.yaml
 - ref: pages/changelog.yaml
 - ref: pages/support.yaml

@@ -27,9 +27,10 @@ BUNDLE = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 
 import composite_specs  # noqa: E402
+import field_texts  # noqa: E402
 
 FACTS = HERE / "threads_api.json"
-VERSION = "0.1.1"
+VERSION = "0.1.2"
 EXTENSION_ID = "flowsteward.threads"
 CONNECTION_TYPE = "threads_account"
 REPOSITORY = "https://github.com/Flow-Steward/ext-marketing-threads"
@@ -716,12 +717,13 @@ def step_ui_manifest(rows: list[dict[str, Any]]) -> dict[str, Any]:
     for row in rows:
         fields = []
         for item in row["inputs"]:
+            label, help_text = field_texts.text_of(item["name"], item["schema"].get("description"))
             field: dict[str, Any] = {
                 "name": item["name"],
-                "label": item["schema"].get("title") or item["name"],
+                "label": label,
                 "widget_type": item["widget"],
                 "required": item["required"],
-                "help_text": (item["schema"].get("description") or item["name"])[:400],
+                "help_text": help_text[:400],
             }
             if item.get("options"):
                 field["options"] = [{"label": v, "value": v} for v in item["options"]]
@@ -921,22 +923,136 @@ def api_page(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "body": overview + "\n",
         }
     ]
-    for area in ["Everyday", *AREAS]:
-        area_rows = [r for r in rows if r["area"] == area]
-        components.append(
-            {
-                "component_id": "steps_" + area.lower(),
-                "type": "markdown",
-                "title": area,
-                "body": "\n".join(step_text(r) for r in area_rows) + "\n",
-            }
-        )
+    components.append(
+        {
+            "component_id": "steps_by_area",
+            "type": "markdown",
+            "title": "Steps by area",
+            "body": "\n".join(
+                f"- **{area}** ({sum(1 for r in rows if r['area'] == area)} steps) — "
+                f"{AREA_LINES[area]}"
+                for area in ["Everyday", *AREAS]
+            )
+            + "\n",
+        }
+    )
+    everyday = [r for r in rows if r["area"] == "Everyday"]
+    components.append(
+        {
+            "component_id": "steps_everyday",
+            "type": "markdown",
+            "title": "Everyday",
+            "body": "\n".join(step_text(r) for r in everyday) + "\n",
+        }
+    )
     return {
         "page_id": "threads-api",
         "title": "Threads API",
         "description": "How the Threads steps work, and every step.",
         "components": components,
     }
+
+
+#: One line per area of the API pages.
+AREA_LINES = {
+    "Everyday": "the common jobs with the fewest inputs: profile, posts, publishing, replies, "
+    "insights and limits.",
+    "Publishing": "media containers, publishing, reposts, deleting posts and container status.",
+    "Posts": "a post by ID, keyword search and embed HTML.",
+    "Replies": "replies and conversations, hiding replies, pending replies and approvals.",
+    "Profiles": "the connected profile and its posts, replies, mentions and ghost posts, public "
+    "profiles and publishing limits.",
+    "Insights": "metrics of a post and of the account.",
+    "Locations": "searching and reading locations to tag.",
+}
+
+
+def area_pages(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    """One page per area with every step and what it does."""
+    pages: dict[str, dict[str, Any]] = {}
+    for area in AREAS:
+        area_rows = [r for r in rows if r["area"] == area]
+        page_id = "threads-api-" + area.lower()
+        pages[f"ui/pages/{page_id}.yaml"] = {
+            "page_id": page_id,
+            "title": f"Threads API: {area}",
+            "description": f"The {len(area_rows)} {area.lower()} steps.",
+            "components": [
+                {
+                    "component_id": "steps_" + area.lower(),
+                    "type": "markdown",
+                    "title": area,
+                    "body": AREA_LINES[area][:1].upper()
+                    + AREA_LINES[area][1:]
+                    + "\n\n"
+                    + "\n".join(step_text(r) for r in area_rows)
+                    + "\n",
+                }
+            ],
+        }
+    return pages
+
+
+def _returns(entry: dict[str, Any]) -> str:
+    """What a step's answer holds, from the documentation's parameters."""
+    fields = next((p for p in entry["params"] if p["name"] == "fields"), None)
+    metric = next((p for p in entry["params"] if p["name"] == "metric"), None)
+    if entry["kind"] == "write":
+        if entry.get("write_class") == "needs_id":
+            return "Returns the `id` Threads gives (in `id` and `data`)."
+        return "Returns Threads' confirmation (`success`) in `data`."
+    if fields and fields["node"].get("allowed"):
+        names = ", ".join(f"`{v}`" for v in fields["node"]["allowed"])
+        return f"Returns the fields asked for in `fields`, from: {names}."
+    if metric and metric["node"].get("allowed"):
+        names = ", ".join(f"`{v}`" for v in metric["node"]["allowed"])
+        return f"Returns the metrics asked for in `metric`, from: {names}."
+    return "Returns Threads' answer in `data`."
+
+
+def api_coverage_page(reg: dict[str, Any], rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Every step: the Threads endpoint it calls, its inputs and what it returns; then the
+    documented endpoints without a step and why."""
+    detail: list[str] = []
+    for area in ["Everyday", *AREAS]:
+        detail += [f"## {area}", ""]
+        for row in (r for r in rows if r["area"] == area):
+            inputs = [
+                f"`{i['name']}`" + (" (required)" if i["required"] else "") for i in row["inputs"]
+            ]
+            detail += [f"### {row['title']} (`{row['id']}`)", ""]
+            detail += ["Threads: " + ", ".join(f"`{c}`" for c in row["calls"]) + ".", ""]
+            entry = reg["operations"].get(row["id"])
+            if entry:
+                detail += [f"Documented on: {entry['page'].removesuffix('.md')}.", ""]
+            detail += ["Inputs: " + (", ".join(inputs) or "none") + ".", ""]
+            if entry:
+                detail += [_returns(entry), ""]
+            else:
+                outs = [
+                    f"`{o['name']}`"
+                    for o in row["outputs"]
+                    if o["name"] not in {"external_effect_status", "definitely_no_external_effect"}
+                ]
+                detail += ["Returns: " + ", ".join(outs) + ".", ""]
+    page = coverage_page(reg)
+    page.update(
+        page_id="api-coverage",
+        title="Threads API coverage",
+        description=(
+            "Every step, the Threads endpoint it calls, its inputs and what it returns, and "
+            "what is deliberately not offered."
+        ),
+    )
+    page["components"].append(
+        {
+            "component_id": "coverage_detail",
+            "type": "markdown",
+            "title": "Every step",
+            "body": "\n".join(detail) + "\n",
+        }
+    )
+    return page
 
 
 def coverage_page(reg: dict[str, Any]) -> dict[str, Any]:
@@ -960,7 +1076,8 @@ def coverage_page(reg: dict[str, Any]) -> dict[str, Any]:
     lines += [
         "",
         "Webhooks (notifications about replies, mentions, publishing and deletion) are set up "
-        "in the Meta App Dashboard, not through an endpoint, and are not part of this release.",
+        "in the Meta App Dashboard and delivered by Meta to the app's own endpoint; they are "
+        "not called as a step.",
     ]
     return {
         "page_id": "coverage",
@@ -994,7 +1111,8 @@ def outputs() -> dict[str, Any]:
         "contracts/connection_types.yaml": connection_types(),
         "ui/actions/actions.yaml": actions_manifest(rows),
         "ui/pages/threads-api.yaml": api_page(rows),
-        "ui/pages/coverage.yaml": coverage_page(reg),
+        "ui/pages/api-coverage.yaml": api_coverage_page(reg, rows),
+        **area_pages(rows),
         "extension.yaml": extension_yaml(rows, reg),
     }
 

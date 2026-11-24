@@ -1,23 +1,128 @@
 page_id: setup-guide
 title: Setup Guide
-description: What you need before the first Threads step runs.
+description: Set up the Meta app once, then connect each Threads account.
+project_scoped: true
 components:
-  - component_id: setup_steps
+  - component_id: setup_operator
     type: markdown
-    title: Set up
+    title: For the person who sets up the Meta app
     body: |
-      1. In the [Meta App Dashboard](https://developers.facebook.com/apps/), create an app with the **Access the Threads API** use case. Until Meta approves your app, it works only for the Threads accounts added as testers.
-      2. Choose the permissions your steps need: `threads_basic` always; `threads_content_publish` to publish; `threads_read_replies` and `threads_manage_replies` for replies; `threads_manage_insights` for insights; `threads_delete` to delete; `threads_keyword_search`, `threads_location_tagging`, `threads_manage_mentions` and `threads_profile_discovery` for the steps that name them.
-      3. Authorize the Threads account in your app and get a long-lived user access token, as Meta's [Get access tokens](https://developers.facebook.com/documentation/threads/get-started/get-access-tokens-and-permissions) and [Long-lived tokens](https://developers.facebook.com/documentation/threads/get-started/long-lived-tokens) guides describe.
-      4. On the **Connection** page, create a connection and paste the token. Press **Test connection**.
-      5. Build a workflow: for example, on a schedule → **Publish a post** with text prepared by an earlier step → **Get post insights** a day later.
+      This needs a Meta developer account in the
+      [Meta App Dashboard](https://developers.facebook.com/apps/). The people whose
+      Threads accounts are connected later do not need one.
+
+      The extension calls the Threads API with a Threads user access token. The app that
+      issues the token belongs to you.
+
+      **Create the app**
+
+      1. App Dashboard → **Create app**. Choose the use case **Access the Threads API**.
+      2. **Use cases → Customize → Permissions**: `threads_basic` is always there. Add
+         the permissions your steps need (see **Which permissions** below). You can add
+         and remove them at any time.
+      3. **Settings**: note the **Threads app ID** and **Threads app secret**, and add the
+         **valid OAuth redirect URI** of the service that runs the authorization (see
+         **Getting the access token**). Meta also asks for a deauthorize callback URL and a
+         data deletion requests URL. **Save**.
+      4. **Add or Remove Threads Test Users** → **App roles → Roles** → **Add People** with
+         the role **Threads Testers**.
+
+      **Testers and App Review.** Until Meta approves the app's permissions in App Review,
+      the app works only for the Threads accounts in its app roles. Submit the app for
+      review to connect any Threads account.
+  - component_id: setup_permissions
+    type: markdown
+    title: Which permissions
+    body: |
+      - `threads_basic` — every step.
+      - `threads_content_publish` — publishing: create and publish media containers,
+        **Publish a post**, reposts.
+      - `threads_read_replies` — reading replies and conversations.
+      - `threads_manage_replies` — replying (`reply_to_id`), hiding replies, approving
+        pending replies.
+      - `threads_manage_insights` — post and account insights.
+      - `threads_delete` — deleting posts.
+      - `threads_keyword_search` — keyword search.
+      - `threads_location_tagging` — location search, and publishing with a location tag.
+      - `threads_manage_mentions` — the mentions of the account.
+      - `threads_profile_discovery` — looking up public profiles and their posts.
+
+      Every step names the permissions it needs. A permission missing from the token is
+      refused by Threads and nothing changes.
+  - component_id: setup_token
+    type: markdown
+    title: Getting the access token
+    body: |
+      Meta issues the token through its authorization window, as described in
+      [Get access tokens](https://developers.facebook.com/documentation/threads/get-started/get-access-tokens-and-permissions):
+
+      1. The account owner opens `https://threads.com/oauth/authorize` with your app ID,
+         the redirect URI, the permissions and `response_type=code`, and allows the
+         access.
+      2. Threads sends the authorization code to the redirect URI. Exchange it at
+         `https://graph.threads.com/oauth/access_token` with the app secret: the answer is
+         a **short-lived** token (one hour).
+      3. Exchange the short-lived token for a **long-lived** one (valid 60 days) with the
+         grant `th_exchange_token`, as described in
+         [Long-lived tokens](https://developers.facebook.com/documentation/threads/get-started/long-lived-tokens).
+
+      Requests that carry the app secret run on your server, never in a browser.
+
+      **Renew before 60 days.** A long-lived token that is at least 24 hours old and still
+      valid can be refreshed with the grant `th_refresh_token`; it is then valid for another
+      60 days. Save the new token in the connection.
+  - component_id: setup_connector
+    type: markdown
+    title: For the person who connects an account
+    body: |
+      You need the long-lived access token of the Threads account and operator or admin
+      access to the Flow Steward project.
+
+      1. Open this extension's **Connection** page.
+      2. Enter a **Connection name** (for example the account's username) and paste the
+         **Threads user access token**. Save.
+      3. Approve the use of the stored secret on the connection's card when Flow Steward
+         asks for it.
+      4. Press **Test connection**: it reads the profile the token belongs to.
+
+      Each connection is one Threads account. Add a connection for every account the
+      workflows publish to or read from.
   - component_id: setup_media
     type: markdown
     title: Images and videos
     body: |
-      Threads downloads every image and video itself from a public address. Put the file where Threads can reach it (your website, a CDN or public storage) and give its address to **Publish a post**. Images: JPEG or PNG, up to 8 MB. Videos: MP4 or MOV, up to 1 GB and 5 minutes. A carousel holds 2 to 20 images and videos.
+      Threads downloads every image and video itself from a public address. Put the file
+      where Threads can reach it — your website, a CDN or public storage — and give its
+      address to **Publish a post**.
+
+      - Images: JPEG or PNG, up to 8 MB.
+      - Videos: MP4 or MOV, up to 1 GB and 5 minutes.
+      - A carousel holds 2 to 20 images and videos.
+
+      Threads processes a media container before it can be published. **Publish a post**
+      checks its status once a minute and publishes it when it is `FINISHED`; when that
+      takes longer than the step's time, the result names the container and **Get media
+      container status** follows it. An unpublished container expires after 24 hours.
   - component_id: setup_limits
     type: markdown
-    title: Limits
+    title: Threads' limits
     body: |
-      In 24 hours a Threads account may publish 250 posts and 1000 replies, delete 100 posts and run 500 location searches; keyword search allows 2200 queries. A post holds up to 500 characters and 5 links.
+      In 24 hours a Threads account may publish 250 posts and 1000 replies, delete 100
+      posts and run 500 location searches; keyword search allows 2200 queries. A post holds
+      up to 500 characters and 5 links. **Get publishing limits** shows how much is used.
+  - component_id: setup_errors
+    type: markdown
+    title: If something fails
+    body: |
+      - **The token is refused** (Threads error code 190) — it expired or was withdrawn.
+        Get a new long-lived token and save it in the connection.
+      - **A permission is missing** (code 10 or 200–299) — authorize the permission the
+        step names and save the new token.
+      - **A rate limit is reached** (codes 4, 17, 32, 613) — wait and run the step again;
+        **Get publishing limits** shows what is used.
+      - **The account cannot be connected** — while the app is not approved in App Review,
+        only Threads accounts with an app role can authorize it.
+      - **The media container ends in ERROR** — Threads could not download or process the
+        file; check that the address is public and the format and size fit.
+
+      A test run of a workflow never sends changes to Threads.

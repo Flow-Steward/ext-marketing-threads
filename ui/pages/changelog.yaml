@@ -2,6 +2,13 @@ page_id: changelog
 title: Changelog
 description: What changed in each version.
 components:
+  - component_id: changelog_0_1_2
+    type: markdown
+    title: 0.1.2
+    body: |
+      - Every input has one readable label in every step; inputs that mean the same are described the same.
+      - New pages: a detailed Setup Guide (the Meta app, permissions, testers, getting and renewing the token, media, limits, errors), one page per area of the Threads API, and Threads API coverage with every step's endpoint, inputs and returned fields, generated from the pinned documentation.
+      - A detailed README with what you can automate.
   - component_id: changelog_0_1_1
     type: markdown
     title: 0.1.1

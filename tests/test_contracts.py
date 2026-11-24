@@ -73,7 +73,7 @@ def test_identity_and_links() -> None:
     # "_"); the checkout folder itself may have any name (the repository's, on GitHub).
     assert data["extension_id"] == "flowsteward.threads"
     assert data["extension_id"].replace(".", "_").replace("-", "_") == "flowsteward_threads"
-    assert data["version"] == "0.1.1"
+    assert data["version"] == "0.1.2"
     assert data["vendor"] == {
         "name": "Flow Steward",
         "support_url": "https://github.com/Flow-Steward/ext-marketing-threads/issues",
