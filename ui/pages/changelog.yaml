@@ -2,6 +2,11 @@ page_id: changelog
 title: Changelog
 description: What changed in each version.
 components:
+  - component_id: changelog_0_1_1
+    type: markdown
+    title: 0.1.1
+    body: |
+      - The tests check the install folder from the extension id, so they pass in the repository's own checkout.
   - component_id: changelog_0_1_0
     type: markdown
     title: 0.1.0

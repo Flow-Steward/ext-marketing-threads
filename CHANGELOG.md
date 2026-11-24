@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1 — 2026-11-24
+
+- The tests check the install folder from the extension id, not the checkout folder, so they pass in the repository's own checkout (v0.1.0 was tagged, but its release did not build).
+
 ## 0.1.0
 
 First version.

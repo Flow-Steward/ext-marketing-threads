@@ -29,7 +29,7 @@ sys.path.insert(0, str(HERE))
 import composite_specs  # noqa: E402
 
 FACTS = HERE / "threads_api.json"
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 EXTENSION_ID = "flowsteward.threads"
 CONNECTION_TYPE = "threads_account"
 REPOSITORY = "https://github.com/Flow-Steward/ext-marketing-threads"
