@@ -3,6 +3,7 @@
 page_id: threads-api-publishing
 title: 'Threads API: Publishing'
 description: The 5 publishing steps.
+project_scoped: false
 components:
 - component_id: steps_publishing
   type: markdown

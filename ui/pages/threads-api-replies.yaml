@@ -3,6 +3,7 @@
 page_id: threads-api-replies
 title: 'Threads API: Replies'
 description: The 5 replies steps.
+project_scoped: false
 components:
 - component_id: steps_replies
   type: markdown

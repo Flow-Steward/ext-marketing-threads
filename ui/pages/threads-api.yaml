@@ -3,6 +3,7 @@
 page_id: threads-api
 title: Threads API
 description: How the Threads steps work, and every step.
+project_scoped: false
 components:
 - component_id: api_overview
   type: markdown

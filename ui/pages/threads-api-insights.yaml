@@ -3,6 +3,7 @@
 page_id: threads-api-insights
 title: 'Threads API: Insights'
 description: The 2 insights steps.
+project_scoped: false
 components:
 - component_id: steps_insights
   type: markdown

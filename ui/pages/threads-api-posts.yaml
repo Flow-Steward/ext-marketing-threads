@@ -3,6 +3,7 @@
 page_id: threads-api-posts
 title: 'Threads API: Posts'
 description: The 3 posts steps.
+project_scoped: false
 components:
 - component_id: steps_posts
   type: markdown

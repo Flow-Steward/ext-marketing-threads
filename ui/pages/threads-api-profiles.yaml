@@ -3,6 +3,7 @@
 page_id: threads-api-profiles
 title: 'Threads API: Profiles'
 description: The 8 profiles steps.
+project_scoped: false
 components:
 - component_id: steps_profiles
   type: markdown

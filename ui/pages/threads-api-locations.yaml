@@ -3,6 +3,7 @@
 page_id: threads-api-locations
 title: 'Threads API: Locations'
 description: The 2 locations steps.
+project_scoped: false
 components:
 - component_id: steps_locations
   type: markdown
